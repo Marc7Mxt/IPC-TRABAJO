@@ -66,12 +66,7 @@ public class inicioAlbertoController implements Initializable {
         stage.setTitle("Login GREENCLUB");
         stage.setResizable(false);
         stage.initModality(Modality.APPLICATION_MODAL);
-        stage.showAndWait();
-        
-        
-        
-        
-        
+        stage.showAndWait(); 
     }
 
     @FXML
