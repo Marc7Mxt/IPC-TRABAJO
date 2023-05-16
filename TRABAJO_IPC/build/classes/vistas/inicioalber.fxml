@@ -20,7 +20,7 @@
                <children>
                   <Button fx:id="botonVerPistas" mnemonicParsing="false" onAction="#clickVerPistas" prefHeight="77.0" prefWidth="202.0" text="Ver Pistas" />
                   <Button mnemonicParsing="false" prefHeight="77.0" prefWidth="202.0" text="Inicio" />
-                  <Button mnemonicParsing="false" prefHeight="77.0" prefWidth="202.0" text="Mis Reservas" />
+                  <Button fx:id="botonReservas" mnemonicParsing="false" onAction="#clickReserva" prefHeight="77.0" prefWidth="202.0" text="Mis Reservas" />
                </children>
             </HBox>
          </children></AnchorPane>

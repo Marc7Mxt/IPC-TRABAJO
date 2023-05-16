@@ -35,6 +35,10 @@ public class InicioalberController implements Initializable {
     private Button botonLogin;
     @FXML
     private Button botonVerPistas;
+    @FXML
+    private Button botonReservas;
+    
+    private boolean loggedIn = false;
 
     /**
      * Initializes the controller class.
@@ -71,7 +75,66 @@ public class InicioalberController implements Initializable {
     }
 
     @FXML
-    private void clickVerPistas(ActionEvent event) {
+    private void clickVerPistas(ActionEvent event) throws IOException{
+        
+        FXMLLoader miCargador = new FXMLLoader(getClass().getResource("/vistas/DisponibilidadPistas.fxml")); //cambiar fxml
+        Parent root = miCargador.load();
+        
+        Scene scene = new Scene(root);
+        String css = this.getClass().getResource("/estilos/estiloPrincipal.css").toExternalForm();
+        scene.getStylesheets().add(css);
+        Stage stage = new Stage();
+        
+        stage.setScene(scene);
+        stage.setTitle("Ver Disponibilidad de Pistas");
+        stage.setMinHeight(750);
+        stage.setMinWidth(900);
+        //stage.setMaximized(true);
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.show();
+        
+        //cerrar vetntana
+        stage = (Stage) botonVerPistas.getScene().getWindow();
+        stage.hide();
+        
+    }
+
+    @FXML
+    private void clickReserva(ActionEvent event) throws IOException {
+        FXMLLoader miReserva = new FXMLLoader(getClass().getResource("/vistas/DisponibilidadPistas.fxml")); //cambiar fxml
+        Parent reservaRoot = miReserva.load();
+        Scene reservaScene = new Scene(reservaRoot);
+        
+        FXMLLoader miLogin = new FXMLLoader(getClass().getResource("/vistas/DisponibilidadPistas.fxml")); //cambiar fxml
+        Parent loginRoot = miLogin.load();
+        Scene loginScene = new Scene(loginRoot);
+        
+        Stage stage = new Stage();
+        
+        if(!loggedIn){
+            stage.setScene(reservaScene);
+            stage.setTitle("Mis reservas");
+            stage.setMinHeight(750);
+            stage.setMinWidth(900);
+            //stage.setMaximized(true);
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.show();
+            stage = (Stage) botonVerPistas.getScene().getWindow();
+            stage.hide();
+            
+            
+            
+        } else {
+            stage.setScene(loginScene);
+            stage.setTitle("Inicio Sesión");
+            stage.setMinHeight(750);
+            stage.setMinWidth(900);
+            //stage.setMaximized(true);
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.show();
+            stage = (Stage) botonVerPistas.getScene().getWindow();
+            stage.hide();
+        }
     }
     
 }

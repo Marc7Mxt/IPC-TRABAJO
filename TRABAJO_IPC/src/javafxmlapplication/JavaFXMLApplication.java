@@ -30,7 +30,7 @@ public class JavaFXMLApplication extends Application {
         //     - configuracion del stage
         //     - se muestra el stage de manera no modal mediante el metodo show()
         stage.setScene(scene);
-        stage.setTitle("start PROJECT - IPC:");
+        stage.setTitle("CLUB DE TENIS GREENCLUB");
         stage.show();
     }
 
