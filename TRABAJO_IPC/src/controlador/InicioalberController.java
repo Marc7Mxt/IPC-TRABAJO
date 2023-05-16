@@ -42,6 +42,9 @@ public class InicioalberController implements Initializable {
         // TODO
         Image imagen = new Image(getClass().getResourceAsStream("/fotostrabajo/foto club.jpg"));
         circulologo.setFill(new ImagePattern(imagen));
+        
+        Image imagenUser = new Image(getClass().getResourceAsStream("/fotostrabajo/foto club.jpg")); //buscar user predef
+        fotoPorDefecto.setFill(new ImagePattern(imagenUser));
     
     }    
 
