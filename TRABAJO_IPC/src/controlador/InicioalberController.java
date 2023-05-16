@@ -101,11 +101,11 @@ public class InicioalberController implements Initializable {
 
     @FXML
     private void clickReserva(ActionEvent event) throws IOException {
-        FXMLLoader miReserva = new FXMLLoader(getClass().getResource("/vistas/DisponibilidadPistas.fxml")); //cambiar fxml
+        FXMLLoader miReserva = new FXMLLoader(getClass().getResource("/vistas/inicio_app.fxml")); //cambiar fxml
         Parent reservaRoot = miReserva.load();
         Scene reservaScene = new Scene(reservaRoot);
         
-        FXMLLoader miLogin = new FXMLLoader(getClass().getResource("/vistas/DisponibilidadPistas.fxml")); //cambiar fxml
+        FXMLLoader miLogin = new FXMLLoader(getClass().getResource("/vistas/login.fxml")); //cambiar fxml
         Parent loginRoot = miLogin.load();
         Scene loginScene = new Scene(loginRoot);
         
@@ -119,7 +119,7 @@ public class InicioalberController implements Initializable {
             //stage.setMaximized(true);
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.show();
-            stage = (Stage) botonVerPistas.getScene().getWindow();
+            stage = (Stage) botonReservas.getScene().getWindow();
             stage.hide();
             
             
