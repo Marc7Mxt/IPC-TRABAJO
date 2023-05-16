@@ -33,6 +33,8 @@ public class InicioalberController implements Initializable {
     private Circle fotoPorDefecto;
     @FXML
     private Button botonLogin;
+    @FXML
+    private Button botonVerPistas;
 
     /**
      * Initializes the controller class.
@@ -66,6 +68,10 @@ public class InicioalberController implements Initializable {
         
         
         
+    }
+
+    @FXML
+    private void clickVerPistas(ActionEvent event) {
     }
     
 }
