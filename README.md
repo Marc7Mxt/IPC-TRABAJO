@@ -1,2 +1,2 @@
-Trabajo IPC README de prueba\n
+Trabajo IPC README de prueba  
 Cambio nº2
