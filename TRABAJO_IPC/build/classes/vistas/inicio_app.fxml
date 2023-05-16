@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="TOP_CENTER" prefHeight="526.0" prefWidth="659.0" spacing="12.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.loginController">
+<VBox alignment="TOP_CENTER" prefHeight="526.0" prefWidth="659.0" spacing="12.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.inicio_appController">
    <children>
       <FlowPane prefHeight="434.0" prefWidth="659.0" styleClass="body" stylesheets="@../estilos/estiloPrincipal.css">
          <children>

@@ -25,7 +25,7 @@ import javafx.stage.Stage;
  *
  * @author Marc
  */
-public class InicioalberController implements Initializable {
+public class inicioAlbertoController implements Initializable {
 
     @FXML
     private Circle circulologo;
