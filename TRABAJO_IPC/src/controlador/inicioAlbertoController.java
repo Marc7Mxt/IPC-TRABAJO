@@ -60,7 +60,7 @@ public class inicioAlbertoController implements Initializable {
         FXMLLoader miCargador = new FXMLLoader(getClass().getResource("/vistas/login.fxml"));
         Parent root = miCargador.load();
         
-        Scene scene = new Scene(root, 375, 400);
+        Scene scene = new Scene(root, 600, 400);
         Stage stage = new Stage();
         stage.setScene(scene);
         stage.setTitle("Login GREENCLUB");
