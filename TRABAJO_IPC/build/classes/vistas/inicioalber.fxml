@@ -1,30 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.SplitPane?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.shape.Circle?>
 
-<SplitPane dividerPositions="0.5" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="400.0" prefWidth="600.0" styleClass="body" stylesheets="@estilos/imfondo.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.inicioAlbertoController">
-  <items>
-    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="body" stylesheets="@../estilos/imfondo.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+  <columnConstraints>
+    <ColumnConstraints hgrow="SOMETIMES" maxWidth="236.3333740234375" minWidth="10.0" prefWidth="170.0" />
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="327.66667429606116" minWidth="10.0" prefWidth="296.000020345052" />
+    <ColumnConstraints hgrow="SOMETIMES" maxWidth="239.33331298828125" minWidth="10.0" prefWidth="170.0" />
+  </columnConstraints>
+  <rowConstraints>
+    <RowConstraints minHeight="10.0" prefHeight="100.0" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="266.0" minHeight="10.0" prefHeight="250.33334350585938" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="128.33334350585938" minHeight="0.0" prefHeight="63.0" vgrow="SOMETIMES" />
+  </rowConstraints>
+   <children>
+      <Circle fill="DODGERBLUE" radius="68.0" stroke="BLACK" strokeType="INSIDE">
+         <GridPane.margin>
+            <Insets left="15.0" top="60.0" />
+         </GridPane.margin>
+      </Circle>
+      <HBox maxHeight="-Infinity" minHeight="-Infinity" prefHeight="63.0" prefWidth="600.0" GridPane.columnSpan="3" GridPane.rowIndex="2">
          <children>
-            <Circle fx:id="circulologo" fill="DODGERBLUE" layoutX="65.0" layoutY="65.0" radius="51.0" stroke="BLACK" strokeType="INSIDE" />
-            <Button fx:id="botonLogin" layoutX="513.0" layoutY="64.0" mnemonicParsing="false" onAction="#clickLogin" text="Usuario" />
-            <Circle fx:id="fotoPorDefecto" fill="DODGERBLUE" layoutX="540.0" layoutY="38.0" radius="27.0" stroke="BLACK" strokeType="INSIDE" AnchorPane.bottomAnchor="253.39999999999998" AnchorPane.leftAnchor="512.6" AnchorPane.rightAnchor="32.200000000000045" AnchorPane.topAnchor="11.0" />
+            <Button mnemonicParsing="false" prefHeight="60.0" prefWidth="200.0" text="Button" />
+            <Button mnemonicParsing="false" prefHeight="60.0" prefWidth="200.0" text="Button" />
+            <Button mnemonicParsing="false" prefHeight="60.0" prefWidth="200.0" text="Button" />
          </children>
-      </AnchorPane>
-    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
-         <children>
-            <HBox alignment="CENTER" layoutX="-1.0" layoutY="-1.0" prefHeight="81.0" prefWidth="598.0">
-               <children>
-                  <Button fx:id="botonVerPistas" mnemonicParsing="false" onAction="#clickVerPistas" prefHeight="77.0" prefWidth="202.0" text="Ver Pistas" />
-                  <Button mnemonicParsing="false" prefHeight="77.0" prefWidth="202.0" text="Inicio" />
-                  <Button fx:id="botonReservas" mnemonicParsing="false" onAction="#clickReserva" prefHeight="77.0" prefWidth="202.0" text="Mis Reservas" />
-               </children>
-            </HBox>
-         </children>
-      </AnchorPane>
-  </items>
-</SplitPane>
+      </HBox>
+      <Button mnemonicParsing="false" text="Usuario" GridPane.columnIndex="2" />
+   </children>
+</GridPane>
