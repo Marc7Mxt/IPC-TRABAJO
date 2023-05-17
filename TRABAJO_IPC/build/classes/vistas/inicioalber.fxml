@@ -6,14 +6,19 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.shape.Circle?>
 
+<<<<<<< HEAD
 <SplitPane dividerPositions="0.806208053691275" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="400.0" prefWidth="600.0" styleClass="body" stylesheets="@../estilos/imfondo.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.inicioAlbertoController">
+=======
+<SplitPane dividerPositions="0.5" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="400.0" prefWidth="600.0" styleClass="body" stylesheets="@estilos/imfondo.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.inicioAlbertoController">
+>>>>>>> 628e37e2c83c883a7aa9cebb25b6627930da82e3
   <items>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
          <children>
             <Circle fx:id="circulologo" fill="DODGERBLUE" layoutX="65.0" layoutY="65.0" radius="51.0" stroke="BLACK" strokeType="INSIDE" />
             <Button fx:id="botonLogin" layoutX="513.0" layoutY="64.0" mnemonicParsing="false" onAction="#clickLogin" text="Usuario" />
             <Circle fx:id="fotoPorDefecto" fill="DODGERBLUE" layoutX="540.0" layoutY="38.0" radius="27.0" stroke="BLACK" strokeType="INSIDE" AnchorPane.bottomAnchor="253.39999999999998" AnchorPane.leftAnchor="512.6" AnchorPane.rightAnchor="32.200000000000045" AnchorPane.topAnchor="11.0" />
-         </children></AnchorPane>
+         </children>
+      </AnchorPane>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
          <children>
             <HBox alignment="CENTER" layoutX="-1.0" layoutY="-1.0" prefHeight="81.0" prefWidth="598.0">
@@ -23,6 +28,7 @@
                   <Button fx:id="botonReservas" mnemonicParsing="false" onAction="#clickReserva" prefHeight="77.0" prefWidth="202.0" text="Mis Reservas" />
                </children>
             </HBox>
-         </children></AnchorPane>
+         </children>
+      </AnchorPane>
   </items>
 </SplitPane>
