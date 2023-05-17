@@ -30,13 +30,11 @@ public class inicioController implements Initializable {
     @FXML
     private Circle circulologo;
     @FXML
-    private Circle fotoPorDefecto;
-    @FXML
-    private Button botonLogin;
-    @FXML
     private Button botonVerPistas;
     @FXML
     private Button botonReservas;
+    @FXML
+    private Button botonLogin;
     
     private boolean loggedIn = false;
 
@@ -48,9 +46,6 @@ public class inicioController implements Initializable {
         // TODO
         Image imagen = new Image(getClass().getResourceAsStream("/fotostrabajo/foto club.jpg"));
         circulologo.setFill(new ImagePattern(imagen));
-        
-        Image imagenUser = new Image(getClass().getResourceAsStream("/fotostrabajo/foto club.jpg")); //buscar user predef
-        fotoPorDefecto.setFill(new ImagePattern(imagenUser));
     
     }    
 
@@ -94,7 +89,6 @@ public class inicioController implements Initializable {
         
     }
 
-    @FXML
     private void clickReserva(ActionEvent event) throws IOException {
         FXMLLoader miReserva = new FXMLLoader(getClass().getResource("/vistas/inicio_app.fxml")); //cambiar fxml
         Parent reservaRoot = miReserva.load();
@@ -130,6 +124,10 @@ public class inicioController implements Initializable {
             stage = (Stage) botonVerPistas.getScene().getWindow();
             stage.hide();
         }
+    }
+
+    @FXML
+    private void clickReservas(ActionEvent event) {
     }
     
 }
