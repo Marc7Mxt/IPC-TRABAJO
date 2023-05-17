@@ -52,4 +52,11 @@
          </children>
       </HBox>
    </bottom>
+   <center>
+      <Text fill="#ffb011" strokeType="OUTSIDE" strokeWidth="0.0" text="Reservar pistas y comprobar horarios nunca ha sido tan fácil" textAlignment="CENTER" wrappingWidth="429.96142578125" BorderPane.alignment="CENTER">
+         <font>
+            <Font name="System Bold" size="38.0" />
+         </font>
+      </Text>
+   </center>
 </BorderPane>
