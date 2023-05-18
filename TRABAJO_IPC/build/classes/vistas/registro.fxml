@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
@@ -7,18 +9,23 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.registroController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="421.0" prefWidth="616.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.registroController">
    <children>
-      <VBox alignment="CENTER" layoutY="1.0" prefHeight="400.0" prefWidth="600.0">
+      <VBox alignment="CENTER" layoutY="1.0" prefHeight="400.0" prefWidth="507.0">
          <children>
-            <Label prefHeight="18.0" prefWidth="234.0" text="Registro de usuario" />
-            <GridPane alignment="CENTER" prefHeight="358.0" prefWidth="601.0">
+            <Label prefHeight="102.0" prefWidth="234.0" text="Registro de usuario">
+               <font>
+                  <Font size="26.0" />
+               </font></Label>
+            <GridPane alignment="CENTER" prefHeight="342.0" prefWidth="496.0">
               <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="312.59998779296876" minWidth="10.0" prefWidth="239.8" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="474.1999633789062" minWidth="10.0" prefWidth="359.79999999999995" />
               </columnConstraints>
               <rowConstraints>
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -29,24 +36,88 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Label text="Apellidos" GridPane.rowIndex="1" />
-                  <Label text="Nombre" />
-                  <Label text="Teléfono" GridPane.rowIndex="2" />
-                  <Label text="Nickname" GridPane.rowIndex="3" />
-                  <Label text="Contraseña" GridPane.rowIndex="4" />
-                  <Label text="Tarjeta de crédito" GridPane.rowIndex="5" />
-                  <Label text="Código SVC" GridPane.rowIndex="6" />
-                  <Label text="Imagen de perfil" GridPane.rowIndex="7" />
-                  <TextField GridPane.columnIndex="1" />
+                  <Label contentDisplay="CENTER" prefHeight="18.0" prefWidth="299.0" text="Apellidos" GridPane.rowIndex="1">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                     <padding>
+                        <Insets left="40.0" />
+                     </padding></Label>
+                  <Label contentDisplay="CENTER" prefHeight="27.0" prefWidth="199.0" text="Nombre">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets />
+                     </GridPane.margin>
+                     <padding>
+                        <Insets left="40.0" />
+                     </padding></Label>
+                  <Label prefHeight="18.0" prefWidth="302.0" text="Teléfono" GridPane.rowIndex="2">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                     <padding>
+                        <Insets left="40.0" />
+                     </padding></Label>
+                  <Label prefHeight="18.0" prefWidth="305.0" text="Nickname" GridPane.rowIndex="3">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                     <padding>
+                        <Insets left="40.0" />
+                     </padding></Label>
+                  <Label prefHeight="18.0" prefWidth="302.0" text="Contraseña" GridPane.rowIndex="4">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                     <padding>
+                        <Insets left="40.0" />
+                     </padding>
+                     <GridPane.margin>
+                        <Insets />
+                     </GridPane.margin></Label>
+                  <Label prefHeight="18.0" prefWidth="299.0" text="Tarjeta de crédito" GridPane.rowIndex="5">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                     <padding>
+                        <Insets left="40.0" />
+                     </padding></Label>
+                  <Label prefHeight="18.0" prefWidth="307.0" text="Código SVC" GridPane.rowIndex="6">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                     <padding>
+                        <Insets left="40.0" />
+                     </padding></Label>
+                  <Label prefHeight="18.0" prefWidth="326.0" text="Imagen de perfil" GridPane.rowIndex="7">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                     <padding>
+                        <Insets left="40.0" />
+                     </padding></Label>
+                  <TextField prefHeight="8.0" prefWidth="314.0" GridPane.columnIndex="1" />
                   <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" />
                   <TextField GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                  <TextField GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <TextField prefHeight="26.0" prefWidth="348.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                   <PasswordField GridPane.columnIndex="1" GridPane.rowIndex="4" />
                   <ComboBox prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="7" />
                   <TextField GridPane.columnIndex="1" GridPane.rowIndex="5" />
-                  <TextField GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                  <TextField prefHeight="26.0" prefWidth="403.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                  <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="8">
+                     <children>
+                        <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="96.0" text="Registrar">
+                           <HBox.margin>
+                              <Insets left="220.0" />
+                           </HBox.margin>
+                        </Button>
+                     </children>
+                  </HBox>
                </children>
             </GridPane>
          </children>
