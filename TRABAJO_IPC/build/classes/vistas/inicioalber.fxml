@@ -37,7 +37,6 @@
       </HBox>
    </bottom>
    <center>
-<<<<<<< HEAD
       <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
             <Text fill="#ffc916" layoutX="102.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="¡Prepárate para jugar! Reserva tu pista y disfruta del juego" textAlignment="CENTER" wrappingWidth="395.3164463043213">
@@ -63,12 +62,4 @@
          </children>
       </AnchorPane>
    </top>
-=======
-      <Text fill="#ffb011" strokeType="OUTSIDE" strokeWidth="0.0" text="Reservar pistas y comprobar horarios nunca ha sido tan fácil" textAlignment="CENTER" wrappingWidth="429.96142578125" BorderPane.alignment="CENTER">
-         <font>
-            <Font name="System Bold" size="38.0" />
-         </font>
-      </Text>
-   </center>
->>>>>>> 468eba973b5331b275983d806bb04be842b86af6
 </BorderPane>
