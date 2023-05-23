@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+
+<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="458.0" prefWidth="434.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <VBox alignment="CENTER" prefHeight="200.0" prefWidth="434.0" spacing="15.0">
+         <children>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Circle fill="WHITE" radius="59.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+               </children>
+            </HBox>
+            <Label fx:id="labelUsuarioDatos" alignment="CENTER" prefHeight="34.0" prefWidth="167.0" text="MARC7MXT" textAlignment="CENTER" />
+         </children>
+      </VBox>
+      <VBox prefHeight="258.0" prefWidth="434.0">
+         <children>
+            <HBox alignment="CENTER" prefHeight="24.0" prefWidth="434.0">
+               <children>
+                  <Label prefHeight="18.0" prefWidth="66.0" text="Nombre" />
+                  <TextField />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="27.0" prefWidth="434.0">
+               <children>
+                  <Label prefHeight="18.0" prefWidth="68.0" text="Apellidos" />
+                  <TextField />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="26.0" prefWidth="434.0">
+               <children>
+                  <Label prefHeight="18.0" prefWidth="66.0" text="Teléfono" />
+                  <TextField />
+               </children></HBox>
+            <HBox alignment="CENTER" prefHeight="15.0" prefWidth="434.0">
+               <children>
+                  <Label prefHeight="18.0" prefWidth="66.0" text="Contraseña" />
+                  <TextField />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="15.0" prefWidth="434.0" />
+         </children>
+      </VBox>
+   </children>
+</VBox>
