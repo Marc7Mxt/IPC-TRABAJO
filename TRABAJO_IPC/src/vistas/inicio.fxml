@@ -39,7 +39,7 @@
    <center>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <Text fill="#ffc916" layoutX="102.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="¡Prepárate para jugar! Reserva tu pista y disfruta del juego" textAlignment="CENTER" wrappingWidth="395.3164463043213">
+            <Text fx:id="lema" fill="#ffc916" layoutX="102.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="lema" text="¡Prepárate para jugar! Reserva tu pista y disfruta del juego" textAlignment="CENTER" wrappingWidth="395.3164463043213">
                <font>
                   <Font name="System Bold" size="36.0" />
                </font>
@@ -48,9 +48,9 @@
       </AnchorPane>
    </center>
    <top>
-      <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onMouseClicked="#pistas" prefHeight="137.0" prefWidth="600.0" styleClass="body" stylesheets="@../estilos/imfondo.css" BorderPane.alignment="CENTER">
+      <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onMouseClicked="#pistas" prefHeight="137.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
-            <Text boundsType="LOGICAL_VERTICAL_CENTER" fill="WHITE" layoutX="257.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" text="GREENBALL CLUB DE TENIS" textAlignment="CENTER" wrappingWidth="276.53524017333984">
+            <Text fx:id="titulo" boundsType="LOGICAL_VERTICAL_CENTER" fill="WHITE" layoutX="257.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="titulo" text="GREENBALL CLUB DE TENIS" textAlignment="CENTER" wrappingWidth="276.53524017333984">
                <font>
                   <Font name="System Bold" size="38.0" />
                </font>

@@ -25,6 +25,8 @@ public class InicioController implements Initializable {
 
     /**
      * Initializes the controller class.
+     * @param url
+     * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -32,7 +34,7 @@ public class InicioController implements Initializable {
     }    
     @FXML
     private void pistas(MouseEvent event) throws IOException {
-        FXMLLoader loader= new FXMLLoader(getClass().getResource("/pistas.fxml"));
+        FXMLLoader loader= new FXMLLoader(getClass().getResource("pistas.fxml"));
         Parent root = loader.load();
         Stage stage = new Stage();
         stage.setScene(new Scene (root));

@@ -4,3 +4,15 @@
     -fx-background-size: 100% 100%;
     -fx-background-position: center;
 }
+
+#lema{
+    -fx-font-color: orange;
+    -fx-stroke-width: 1px;
+    -fx-stroke: white;
+}
+
+#titulo{
+    -fx-font-color: white;
+    -fx-stroke-width: 1px;
+    -fx-stroke: black;
+}
