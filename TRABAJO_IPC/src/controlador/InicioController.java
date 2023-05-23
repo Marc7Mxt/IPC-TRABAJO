@@ -13,8 +13,11 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import javafxmlapplication.JavaFXMLApplication;
 
 /**
  * FXML Controller class
@@ -22,6 +25,13 @@ import javafx.stage.Stage;
  * @author admin
  */
 public class InicioController implements Initializable {
+
+    @FXML
+    private Text titulo;
+    @FXML
+    private Text lema;
+    @FXML
+    private Button buttonMisreservas;
 
     /**
      * Initializes the controller class.
@@ -32,17 +42,22 @@ public class InicioController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
+
+        
+    
     @FXML
-    private void pistas(MouseEvent event) throws IOException {
-        FXMLLoader loader= new FXMLLoader(getClass().getResource("pistas.fxml"));
+    private void IraPistas(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/vistas/pistas.fxml"));
         Parent root = loader.load();
-        Stage stage = new Stage();
-        stage.setScene(new Scene (root));
-        stage.setTitle("pistas");
-        stage.show();
+        
+        JavaFXMLApplication.setRoot(root);
     }
 
     @FXML
-    private void pistas(ActionEvent event) {
+    private void IraMisreservas(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/vistas/misreservas.fxml"));
+        Parent root = loader.load();
+        
+        JavaFXMLApplication.setRoot(root);
     }
 }

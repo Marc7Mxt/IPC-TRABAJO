@@ -9,21 +9,21 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#pistas" prefHeight="400.0" prefWidth="600.0" styleClass="body" stylesheets="@../estilos/imfondo.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.InicioController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="body" stylesheets="@../estilos/imfondo.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.InicioController">
    <bottom>
       <HBox prefHeight="50.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="150.0" text="INICIO" textAlignment="CENTER">
+            <Button defaultButton="true" mnemonicParsing="false" pickOnBounds="false" prefHeight="50.0" prefWidth="150.0" text="INICIO" textAlignment="CENTER" wrapText="true">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" onAction="#pistas" onMouseClicked="#pistas" prefHeight="50.0" prefWidth="150.0" text="VER PISTAS" textAlignment="CENTER">
+            <Button mnemonicParsing="false" onAction="#IraPistas" prefHeight="50.0" prefWidth="150.0" text="VER PISTAS" textAlignment="CENTER">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="150.0" text="MIS RESERVAS" textAlignment="CENTER">
+            <Button fx:id="buttonMisreservas" mnemonicParsing="false" onAction="#IraMisreservas" prefHeight="50.0" prefWidth="150.0" text="MIS RESERVAS" textAlignment="CENTER">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
@@ -48,7 +48,7 @@
       </AnchorPane>
    </center>
    <top>
-      <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onMouseClicked="#pistas" prefHeight="137.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+      <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="137.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
             <Text fx:id="titulo" boundsType="LOGICAL_VERTICAL_CENTER" fill="WHITE" layoutX="257.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="titulo" text="GREENBALL CLUB DE TENIS" textAlignment="CENTER" wrappingWidth="276.53524017333984">
                <font>
