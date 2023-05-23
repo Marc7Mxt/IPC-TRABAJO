@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
@@ -17,16 +18,17 @@
             <Font size="24.0" />
          </font>
       </Label>
-      <Label layoutX="109.0" layoutY="262.0" prefHeight="18.0" prefWidth="75.0" text="Nickname" />
-      <Label layoutX="106.0" layoutY="302.0" prefHeight="18.0" prefWidth="81.0" text="Contraseña" />
-      <TextField fx:id="textfieldNicknameLogin" layoutX="192.0" layoutY="258.0" prefHeight="25.0" prefWidth="207.0" />
-      <PasswordField fx:id="passfieldLogin" layoutX="192.0" layoutY="298.0" prefHeight="25.0" prefWidth="207.0" />
-      <Button fx:id="botonRegistrarse" layoutX="285.0" layoutY="206.0" mnemonicParsing="false" onAction="#registrarseClicked" prefHeight="25.0" prefWidth="111.0" text="REGÍSTRATE">
+      <Label layoutX="96.0" layoutY="261.0" prefHeight="18.0" prefWidth="75.0" text="Nickname">
          <font>
-            <Font size="14.0" />
-         </font>
-      </Button>
-      <Button fx:id="botonEntrar" layoutX="285.0" layoutY="341.0" mnemonicParsing="false" onAction="#entrarClicked" prefHeight="17.0" prefWidth="111.0" text="ENTRAR">
+            <Font size="13.0" />
+         </font></Label>
+      <Label layoutX="90.0" layoutY="301.0" prefHeight="18.0" prefWidth="81.0" text="Contraseña">
+         <font>
+            <Font size="13.0" />
+         </font></Label>
+      <TextField fx:id="textfieldNicknameLogin" layoutX="172.0" layoutY="258.0" prefHeight="25.0" prefWidth="177.0" />
+      <PasswordField fx:id="passfieldLogin" layoutX="172.0" layoutY="298.0" prefHeight="25.0" prefWidth="177.0" />
+      <Button fx:id="botonEntrar" layoutX="252.0" layoutY="341.0" mnemonicParsing="false" onAction="#entrarClicked" prefHeight="11.0" prefWidth="95.0" text="ENTRAR">
          <font>
             <Font size="18.0" />
          </font>
@@ -37,10 +39,15 @@
             <Image url="@../fotostrabajo/logo-sinfondo.png" />
          </image>
       </ImageView>
-      <Text layoutX="61.0" layoutY="226.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Si aún no te has creado una cuenta ">
+      <Text layoutX="84.0" layoutY="226.0" strokeType="OUTSIDE" strokeWidth="0.0" text="¿Aún no te has creado una cuenta?">
          <font>
             <Font size="14.0" />
          </font>
       </Text>
+      <Hyperlink layoutX="312.0" layoutY="208.0" text="Regístrate">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Hyperlink>
    </children>
 </AnchorPane>
