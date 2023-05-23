@@ -39,7 +39,7 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Label contentDisplay="CENTER" prefHeight="18.0" prefWidth="299.0" text="Apellidos" GridPane.rowIndex="1">
+                  <Label contentDisplay="CENTER" prefHeight="18.0" prefWidth="299.0" text="Apellido(s)" GridPane.rowIndex="1">
                      <font>
                         <Font size="18.0" />
                      </font>

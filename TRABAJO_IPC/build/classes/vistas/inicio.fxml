@@ -9,7 +9,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="body" stylesheets="@../estilos/imfondo.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vistas.InicioalberController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#pistas" prefHeight="400.0" prefWidth="600.0" styleClass="body" stylesheets="@../estilos/imfondo.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.InicioController">
    <bottom>
       <HBox prefHeight="50.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
@@ -18,7 +18,7 @@
                   <Font name="System Bold" size="12.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="150.0" text="VER PISTAS" textAlignment="CENTER">
+            <Button mnemonicParsing="false" onAction="#pistas" onMouseClicked="#pistas" prefHeight="50.0" prefWidth="150.0" text="VER PISTAS" textAlignment="CENTER">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
@@ -39,17 +39,18 @@
    <center>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <Text fill="#ffc916" layoutX="102.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="¡Prepárate para jugar! Reserva tu pista y disfruta del juego" textAlignment="CENTER" wrappingWidth="395.3164463043213">
+            <Text fx:id="lema" fill="#ffc916" layoutX="102.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="lema" text="¡Prepárate para jugar! Reserva tu pista y disfruta del juego" textAlignment="CENTER" wrappingWidth="395.3164463043213">
                <font>
                   <Font name="System Bold" size="36.0" />
                </font>
             </Text>
-         </children></AnchorPane>
+         </children>
+      </AnchorPane>
    </center>
    <top>
-      <AnchorPane prefHeight="137.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+      <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onMouseClicked="#pistas" prefHeight="137.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
-            <Text boundsType="LOGICAL_VERTICAL_CENTER" fill="WHITE" layoutX="257.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" text="GREENBALL CLUB DE TENIS" textAlignment="CENTER" wrappingWidth="276.53524017333984">
+            <Text fx:id="titulo" boundsType="LOGICAL_VERTICAL_CENTER" fill="WHITE" layoutX="257.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="titulo" text="GREENBALL CLUB DE TENIS" textAlignment="CENTER" wrappingWidth="276.53524017333984">
                <font>
                   <Font name="System Bold" size="38.0" />
                </font>
