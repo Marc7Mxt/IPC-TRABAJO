@@ -112,7 +112,7 @@
                   <TextField fx:id="svcRegistro" prefHeight="26.0" prefWidth="403.0" GridPane.columnIndex="1" GridPane.rowIndex="7" />
                   <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="9">
                      <children>
-                        <Button fx:id="botonRegistrar" mnemonicParsing="false" onAction="#registrarClicked" prefHeight="30.0" prefWidth="96.0" text="Registrar">
+                        <Button fx:id="botonRegistrar" mnemonicParsing="false" onAction="#registrarClicked" prefHeight="30.0" prefWidth="96.0" text="Registrarse">
                            <HBox.margin>
                               <Insets left="220.0" />
                            </HBox.margin>
