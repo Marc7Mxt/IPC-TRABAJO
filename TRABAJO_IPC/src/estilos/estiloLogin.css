@@ -1,0 +1,13 @@
+#botonVolver {
+    -fx-background-color: white;
+    -fx-text-fill: green;
+    -fx-font-weight: bold;
+    -fx-font-size: 12px;
+    -fx-border-width: 3 3 3 3;
+    -fx-border-color: green;
+}
+#botonVolver:hover{
+    -fx-background-color: green;
+    -fx-text-fill: white;
+}
+

@@ -6,8 +6,13 @@ package controlador;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
@@ -21,6 +26,16 @@ public class LoginController implements Initializable {
 
     @FXML
     private Circle circuloLogo;
+    @FXML
+    private Button botonRegistrarse;
+    @FXML
+    private Button botonEntrar;
+    @FXML
+    private Label labelRegistro;
+    @FXML
+    private TextField textfieldNicknameLogin;
+    @FXML
+    private PasswordField passfieldLogin;
 
     /**
      * Initializes the controller class.
@@ -32,5 +47,15 @@ public class LoginController implements Initializable {
         circuloLogo.setFill(new ImagePattern(imagen));
         
     }    
+
+    @FXML
+    private void registrarseClicked(ActionEvent event) {
+        
+        
+    }
+
+    @FXML
+    private void entrarClicked(ActionEvent event) {
+    }
     
 }

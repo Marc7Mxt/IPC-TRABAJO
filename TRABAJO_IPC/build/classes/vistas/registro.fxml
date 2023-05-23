@@ -24,8 +24,8 @@
                </font></Label>
             <GridPane alignment="CENTER" prefHeight="342.0" prefWidth="496.0">
               <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="312.59998779296876" minWidth="10.0" prefWidth="239.8" />
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="474.1999633789062" minWidth="10.0" prefWidth="359.79999999999995" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="312.59998779296876" minWidth="10.0" prefWidth="206.79998779296875" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="474.1999633789062" minWidth="10.0" prefWidth="301.20001220703125" />
               </columnConstraints>
               <rowConstraints>
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -37,9 +37,10 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Label contentDisplay="CENTER" prefHeight="18.0" prefWidth="299.0" text="Apellidos" GridPane.rowIndex="1">
+                  <Label contentDisplay="CENTER" prefHeight="18.0" prefWidth="299.0" text="Apellido(s)" GridPane.rowIndex="1">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -80,44 +81,53 @@
                      <GridPane.margin>
                         <Insets />
                      </GridPane.margin></Label>
-                  <Label prefHeight="18.0" prefWidth="299.0" text="Tarjeta de crédito" GridPane.rowIndex="5">
+                  <Label prefHeight="18.0" prefWidth="299.0" text="Tarjeta de crédito" GridPane.rowIndex="6">
                      <font>
                         <Font size="18.0" />
                      </font>
                      <padding>
                         <Insets left="40.0" />
                      </padding></Label>
-                  <Label prefHeight="18.0" prefWidth="307.0" text="Código SVC" GridPane.rowIndex="6">
+                  <Label prefHeight="18.0" prefWidth="307.0" text="Código SVC" GridPane.rowIndex="7">
                      <font>
                         <Font size="18.0" />
                      </font>
                      <padding>
                         <Insets left="40.0" />
                      </padding></Label>
-                  <Label prefHeight="18.0" prefWidth="326.0" text="Imagen de perfil" GridPane.rowIndex="7">
+                  <Label prefHeight="18.0" prefWidth="326.0" text="Imagen de perfil" GridPane.rowIndex="8">
                      <font>
                         <Font size="18.0" />
                      </font>
                      <padding>
                         <Insets left="40.0" />
                      </padding></Label>
-                  <TextField prefHeight="8.0" prefWidth="314.0" GridPane.columnIndex="1" />
-                  <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                  <TextField GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                  <TextField prefHeight="26.0" prefWidth="348.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                  <PasswordField GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                  <ComboBox prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="7" />
-                  <TextField GridPane.columnIndex="1" GridPane.rowIndex="5" />
-                  <TextField prefHeight="26.0" prefWidth="403.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-                  <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="8">
+                  <TextField fx:id="textfieldNombreRegistro" prefHeight="8.0" prefWidth="314.0" GridPane.columnIndex="1" />
+                  <TextField fx:id="textfieldApellidosRegistro" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <TextField fx:id="textfieldTlfRegistro" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <TextField fx:id="textfieldNicknameRegistro" prefHeight="26.0" prefWidth="348.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <PasswordField fx:id="passfieldRegistro" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                  <ComboBox fx:id="comboBoxRegistro" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+                  <TextField fx:id="tarjetaRegistro" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                  <TextField fx:id="svcRegistro" prefHeight="26.0" prefWidth="403.0" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                  <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="9">
                      <children>
-                        <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="96.0" text="Registrar">
+                        <Button fx:id="botonRegistrar" mnemonicParsing="false" onAction="#registrarClicked" prefHeight="30.0" prefWidth="96.0" text="Registrar">
                            <HBox.margin>
                               <Insets left="220.0" />
                            </HBox.margin>
                         </Button>
                      </children>
                   </HBox>
+                  <Label prefHeight="18.0" prefWidth="302.0" text="Repetir Contraseña" GridPane.rowIndex="5">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                     <padding>
+                        <Insets left="40.0" />
+                     </padding>
+                  </Label>
+                  <PasswordField fx:id="passfieldRepRegistro" GridPane.columnIndex="1" GridPane.rowIndex="5" />
                </children>
             </GridPane>
          </children>
