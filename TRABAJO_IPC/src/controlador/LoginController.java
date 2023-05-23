@@ -36,6 +36,8 @@ public class LoginController implements Initializable {
     private TextField textfieldNicknameLogin;
     @FXML
     private PasswordField passfieldLogin;
+    @FXML
+    private Button botonVolver;
 
     /**
      * Initializes the controller class.
@@ -56,6 +58,12 @@ public class LoginController implements Initializable {
 
     @FXML
     private void entrarClicked(ActionEvent event) {
+    }
+
+    @FXML
+    private void volverClicked(ActionEvent event) {
+        
+        
     }
     
 }
