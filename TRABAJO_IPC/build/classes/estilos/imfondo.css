@@ -8,7 +8,11 @@
 #lema{
     -fx-font-color: orange;
     -fx-stroke-width: 1px;
+<<<<<<< HEAD
     -fx-stroke: black;
+=======
+    -fx-stroke: white;
+>>>>>>> fa55e1ebcfd7dbc48888534f7c7cc41941175cc7
 }
 
 #titulo{

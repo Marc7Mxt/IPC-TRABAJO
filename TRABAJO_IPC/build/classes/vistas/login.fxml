@@ -1,17 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.LoginController">
+<AnchorPane id="AnchorPane" prefHeight="395.0" prefWidth="472.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.LoginController">
    <children>
-      <Circle fx:id="circuloLogo" fill="WHITE" layoutX="300.0" layoutY="124.0" radius="67.0" stroke="BLACK" strokeType="INSIDE" />
-      <Label alignment="CENTER" layoutX="121.0" layoutY="14.0" prefHeight="38.0" prefWidth="370.0" text="Inicio de sesión">
+      <Circle fx:id="circuloLogo" fill="WHITE" layoutX="236.0" layoutY="110.0" radius="58.0" stroke="BLACK" strokeType="INSIDE" />
+      <Label alignment="CENTER" layoutX="51.0" layoutY="14.0" prefHeight="38.0" prefWidth="370.0" text="Inicio de sesión">
          <font>
             <Font size="24.0" />
          </font>
       </Label>
+      <Label layoutX="79.0" layoutY="191.0" prefHeight="18.0" prefWidth="90.0" text="Nickname" />
+      <Label layoutX="79.0" layoutY="227.0" prefHeight="18.0" prefWidth="81.0" text="Contraseña" />
+      <TextField fx:id="textfieldNicknameLogin" layoutX="161.0" layoutY="187.0" />
+      <PasswordField fx:id="passfieldLogin" layoutX="161.0" layoutY="223.0" />
+      <Button fx:id="botonRegistrarse" layoutX="182.0" layoutY="342.0" mnemonicParsing="false" onAction="#registrarseClicked" prefHeight="38.0" prefWidth="108.0" text="REGISTRARSE">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+      <Button fx:id="botonEntrar" layoutX="169.0" layoutY="285.0" mnemonicParsing="false" onAction="#entrarClicked" prefHeight="40.0" prefWidth="134.0" text="ENTRAR">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+      <Label fx:id="labelRegistro" layoutX="143.0" layoutY="262.0" prefHeight="18.0" prefWidth="187.0" />
+      <Button fx:id="botonVolver" layoutX="25.0" layoutY="21.0" mnemonicParsing="false" onAction="#volverClicked" stylesheets="@../estilos/estiloLogin.css" text="Volver" />
    </children>
 </AnchorPane>
