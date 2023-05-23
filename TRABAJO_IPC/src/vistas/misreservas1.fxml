@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.Pane?>
+
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.MisReservasController">
+   <children>
+      <Button fx:id="buttonAnular" layoutX="274.0" layoutY="188.0" mnemonicParsing="false" onAction="#anularHandle" text="Anular" />
+   </children>
+</Pane>
