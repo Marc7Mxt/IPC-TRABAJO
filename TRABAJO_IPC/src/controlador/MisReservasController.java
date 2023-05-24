@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
+import javafx.beans.binding.Bindings;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -37,6 +38,7 @@ public class MisReservasController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         datos = TableView.getItems();
+        buttonAnular.disableProperty().bind(Bindings.equal(-1,TableView.getSelectionModel().selectedIndexProperty()));
     }  
     
     @FXML
@@ -63,11 +65,17 @@ public class MisReservasController implements Initializable {
     @FXML
     private void anularHandle(ActionEvent event) {
         Alert anular = new Alert(AlertType.CONFIRMATION);
-        anular.setTitle("Anular Reserva");
+        anular.setTitle("ANULAR RESERVA");
         anular.setHeaderText(null);
         anular.setContentText("¿Quieres anular esta reserva?");
         Optional<ButtonType> result = anular.showAndWait();
-        if(result.isPresent() && result.get() == ButtonType.OK) System.out.println("OK");
-        else System.out.println("CANCEL");      
+        if(result.isPresent() && result.get() == ButtonType.OK){
+            datos.remove(TableView.getSelectionModel().getSelectedIndex());
+            Alert eliminada = new Alert(AlertType.INFORMATION);
+            eliminada.setTitle("RESERVA ELIMINADA");
+            eliminada.setHeaderText(null);
+            eliminada.setContentText("La reserva fue eliminada con éxito");
+            eliminada.showAndWait();
+        } 
     }
 }
