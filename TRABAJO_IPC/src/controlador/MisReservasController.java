@@ -6,9 +6,15 @@ package controlador;
 
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
 import javafx.beans.binding.Bindings;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -23,6 +29,9 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafxmlapplication.JavaFXMLApplication;
+import model.Booking;
+import model.Club;
+import model.ClubDAOException;
 
 /**
  *
@@ -37,21 +46,27 @@ public class MisReservasController implements Initializable {
     @FXML
     private TableView<String> TableView;
     @FXML
-    private TableColumn<?, String> dia;
-    @FXML
-    private TableColumn<String, String> pista;
-    @FXML
-    private TableColumn<?, String> inicio;
-    @FXML
-    private TableColumn<?, String> salida;
-    @FXML
-    private TableColumn<?, String> pagada;
-    @FXML
     private Button prueba;
+    @FXML
+    private TableColumn<LocalDate, String> diaColumn;
+    @FXML
+    private TableColumn<Booking, String> pistaColumn;
+    @FXML
+    private TableColumn<LocalTime, String> inicioColumn;
+    @FXML
+    private TableColumn<Booking, String> salidaColumn;
+    @FXML
+    private TableColumn<Booking, String> pagoColumn;
     
     
-    
-    
+    //REVISAR DE NUEVO
+    private void inicializaModelo(String login) throws ClubDAOException, IOException{
+        Club club = Club.getInstance();    
+        diaColumn.setCellValueFactory((diaFila) ->new SimpleStringProperty(diaFila.getValue().toString()));
+        
+        List<Booking> misdatos = new ArrayList<Booking>();
+        club.getUserBookings(login);
+    }
     @Override
     public void initialize(URL url, ResourceBundle rb) {
        //TableView.setItems(datos);
