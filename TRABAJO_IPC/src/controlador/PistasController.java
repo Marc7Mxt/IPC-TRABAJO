@@ -4,12 +4,15 @@
  */
 package controlador;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.input.MouseEvent;
+import javafx.scene.Parent;
+import javafxmlapplication.JavaFXMLApplication;
 
 /**
  * FXML Controller class
@@ -27,11 +30,20 @@ public class PistasController implements Initializable {
     }    
 
     @FXML
-    private void inicio(MouseEvent event) {
+    private void IraInicio(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/vistas/inicio.fxml"));
+        Parent root = loader.load();
+        
+        JavaFXMLApplication.setRoot(root);
     }
 
     @FXML
-    private void inicio(ActionEvent event) {
+    private void IraMisreservas(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/vistas/misreservas.fxml"));
+        Parent root = loader.load();
+        
+        JavaFXMLApplication.setRoot(root);
     }
+
     
 }

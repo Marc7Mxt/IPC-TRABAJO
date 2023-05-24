@@ -13,6 +13,7 @@
 
 <AnchorPane id="AnchorPane" prefHeight="395.0" prefWidth="472.0" style="-fx-background-image: url(&quot;/fotostrabajo/fondotodas.jpeg&quot;);" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.LoginController">
    <children>
+<<<<<<< HEAD
       <AnchorPane prefHeight="395.3333333333333" prefWidth="472.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <ImageView fitHeight="395.0" fitWidth="472.0" pickOnBounds="true">
@@ -60,5 +61,43 @@
             </ImageView>
          </children>
       </AnchorPane>
+=======
+      <Label alignment="CENTER" layoutX="51.0" layoutY="14.0" prefHeight="38.0" prefWidth="370.0" text="Inicio de sesión">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="96.0" layoutY="261.0" prefHeight="18.0" prefWidth="75.0" text="Nickname">
+         <font>
+            <Font size="13.0" />
+         </font></Label>
+      <Label layoutX="90.0" layoutY="301.0" prefHeight="18.0" prefWidth="81.0" text="Contraseña">
+         <font>
+            <Font size="13.0" />
+         </font></Label>
+      <TextField fx:id="textfieldNicknameLogin" layoutX="172.0" layoutY="258.0" prefHeight="25.0" prefWidth="177.0" />
+      <PasswordField fx:id="passfieldLogin" layoutX="172.0" layoutY="298.0" prefHeight="25.0" prefWidth="177.0" />
+      <Button fx:id="botonEntrar" layoutX="252.0" layoutY="341.0" mnemonicParsing="false" onAction="#entrarClicked" prefHeight="11.0" prefWidth="95.0" text="ENTRAR">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+      <Button fx:id="botonVolver" layoutX="25.0" layoutY="21.0" mnemonicParsing="false" onAction="#volverClicked" stylesheets="@../estilos/estiloLogin.css" text="Volver" />
+      <ImageView fitHeight="128.0" fitWidth="130.0" layoutX="172.0" layoutY="53.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../fotostrabajo/logo-sinfondo.png" />
+         </image>
+      </ImageView>
+      <Text layoutX="84.0" layoutY="226.0" strokeType="OUTSIDE" strokeWidth="0.0" text="¿Aún no te has creado una cuenta?">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Text>
+      <Hyperlink layoutX="312.0" layoutY="208.0" text="Regístrate">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Hyperlink>
+>>>>>>> 0fcecdf1e75c4cb4dd0457f790040d987bf51e0a
    </children>
 </AnchorPane>

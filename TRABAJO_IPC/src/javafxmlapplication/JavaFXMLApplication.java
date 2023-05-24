@@ -14,6 +14,12 @@ import javafx.stage.Stage;
 
 public class JavaFXMLApplication extends Application {
     
+    private static Scene scene;
+    
+    public static void setRoot(Parent root){
+        scene.setRoot(root);
+    }
+    
     @Override
     public void start(Stage stage) throws Exception {
         //======================================================================
@@ -22,7 +28,7 @@ public class JavaFXMLApplication extends Application {
         Parent root = loader.load();
         //======================================================================
         // 2- creación de la escena con el nodo raiz del grafo de escena
-        Scene scene = new Scene(root);
+        scene = new Scene(root);
         String css = this.getClass().getResource("/estilos/imfondo.css").toExternalForm();
         scene.getStylesheets().add(css);
         //======================================================================
