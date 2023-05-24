@@ -117,9 +117,9 @@ public class registroController implements Initializable {
         Club club = Club.getInstance();
         
         // revisar que todos los campos son correctos
-        if(esValido(textfieldNombreRegistro) && esValido(textfieldApellidosRegistro) && esTlfValido(textfieldTlfRegistro)
-                && esNickValido(textfieldNicknameRegistro) && esPassValida(passfieldRegistro, passfieldRepRegistro)
-                && esCreditValido(tarjetaRegistro, svcRegistro)){
+        if(validarDatos(textfieldNombreRegistro) && validarDatos(textfieldApellidosRegistro) && validarTlf(textfieldTlfRegistro)
+                && validarNick(textfieldNicknameRegistro) && validarContraseña(passfieldRegistro, passfieldRepRegistro)
+                && validarCredit(tarjetaRegistro, svcRegistro)){
             int svc = 0;
             // si han completado el campo svc cambiarlo a INTEGER
             if(!svcRegistro.getText().isEmpty()){
@@ -137,7 +137,7 @@ public class registroController implements Initializable {
             // Alerta : REGISTRO CORRECTO
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setHeaderText(null);
-            alert.setTitle("Informacion");
+            alert.setTitle("Información");
             alert.setContentText("Se ha registrado correctamente");
             alert.showAndWait();
             // registrar el nuevo miembro
@@ -159,7 +159,7 @@ public class registroController implements Initializable {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setHeaderText(null);
                 alert.setTitle("Error");
-                alert.setContentText("Completa correctamente los campos");
+                alert.setContentText("Completa correctamente los campos de registro");
                 alert.showAndWait();
             }         
         }
@@ -184,41 +184,42 @@ class ImagenTabCell extends ComboBoxListCell<String> {
         }
     }
 // metodo para saber si el TextField es valido
-    private boolean esValido(TextField t){
+    private boolean validarDatos(TextField t){
         String s = t.getText();
         return (!s.isEmpty()) && (s.trim().length() != 0);
     }
     
     // metodo para saber si el TextField del NICK es valido
-    private boolean esNickValido(TextField t) throws ClubDAOException, IOException{
+    private boolean validarNick(TextField t) throws ClubDAOException, IOException{
         Club club = Club.getInstance();
         boolean existe = club.existsLogin(t.getText());
         String s = t.getText();
-        return esValido(t) && !existe;
+        return validarDatos(t) && !existe;
     }
     
     // metodo para saber si el TextField de la CONTRASEÑA es valido
-    private boolean esPassValida(TextField t, TextField t1){
+    private boolean validarContraseña(TextField t, TextField t1){
         String s = t.getText();
         String r = "^(?=.*[0-9])"
+                + "(?=.*[A-Z])"
                 + "(?=.*[a-z])"
                 + "(?=\\S+$).{6,20}$";
         
         Pattern p = Pattern.compile(r);
         Matcher m = p.matcher(s);
-        return esValido(t) && m.matches() && s.equals(t1.getText());
+        return validarDatos(t) && m.matches() && s.equals(t1.getText());
     }
     
     // metodo para saber si el TextField del TELEFONO es valido
-    private boolean esTlfValido(TextField t){
+    private boolean validarTlf(TextField t){
         String s = t.getText();
         Pattern p = Pattern.compile("^\\d{9}$");
         Matcher m = p.matcher(s);
-        return esValido(t) && m.matches();
+        return validarDatos(t) && m.matches();
     }
     
     // metodo para saber si el TextField de la TARJETA y el SVC es valido
-    private boolean esCreditValido(TextField t, TextField t1){
+    private boolean validarCredit(TextField t, TextField t1){
         // String cleanCreditCard = t.replaceAll("\\s|-", "");
         String s = t.getText();
         Pattern p = Pattern.compile("^\\d{16}$");
@@ -226,7 +227,7 @@ class ImagenTabCell extends ComboBoxListCell<String> {
         String s1 = t1.getText();
         Pattern p1 = Pattern.compile("^\\d{3}$");
         Matcher m1 = p1.matcher(s1);
-        return (t.getText().isEmpty()&& t1.getText().isEmpty()) || (esValido(t) && esValido(t1) && m.matches() && m1.matches());
+        return (t.getText().isEmpty()&& t1.getText().isEmpty()) || (validarDatos(t) && validarDatos(t1) && m.matches() && m1.matches());
     }
     
     
