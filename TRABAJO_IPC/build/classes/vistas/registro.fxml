@@ -16,7 +16,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="421.0" prefWidth="616.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.registroController">
    <children>
-      <VBox alignment="CENTER" layoutY="1.0" prefHeight="400.0" prefWidth="507.0">
+      <VBox alignment="CENTER" layoutY="1.0" prefHeight="421.0" prefWidth="616.0" styleClass="fondo" stylesheets="@../estilos/imfondo.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <Label prefHeight="102.0" prefWidth="234.0" text="Registro de usuario">
                <font>
@@ -47,7 +47,7 @@
                      <padding>
                         <Insets left="40.0" />
                      </padding></Label>
-                  <Label contentDisplay="CENTER" prefHeight="27.0" prefWidth="199.0" text="Nombre">
+                  <Label contentDisplay="CENTER" prefHeight="27.0" prefWidth="199.0" text="Nombre" textAlignment="CENTER">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -103,7 +103,10 @@
                         <Insets left="40.0" />
                      </padding></Label>
                   <TextField fx:id="textfieldNombreRegistro" prefHeight="8.0" prefWidth="314.0" GridPane.columnIndex="1" />
-                  <TextField fx:id="textfieldApellidosRegistro" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <TextField fx:id="textfieldApellidosRegistro" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                     <GridPane.margin>
+                        <Insets />
+                     </GridPane.margin></TextField>
                   <TextField fx:id="textfieldTlfRegistro" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                   <TextField fx:id="textfieldNicknameRegistro" prefHeight="26.0" prefWidth="348.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                   <PasswordField fx:id="passfieldRegistro" GridPane.columnIndex="1" GridPane.rowIndex="4" />
@@ -112,7 +115,7 @@
                   <TextField fx:id="svcRegistro" prefHeight="26.0" prefWidth="403.0" GridPane.columnIndex="1" GridPane.rowIndex="7" />
                   <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="9">
                      <children>
-                        <Button fx:id="botonRegistrar" mnemonicParsing="false" onAction="#registrarClicked" prefHeight="30.0" prefWidth="96.0" text="Registrar">
+                        <Button fx:id="botonRegistrar" mnemonicParsing="false" onAction="#registrarClicked" prefHeight="30.0" prefWidth="96.0" text="Registrarse">
                            <HBox.margin>
                               <Insets left="220.0" />
                            </HBox.margin>
@@ -129,6 +132,9 @@
                   </Label>
                   <PasswordField fx:id="passfieldRepRegistro" GridPane.columnIndex="1" GridPane.rowIndex="5" />
                </children>
+               <padding>
+                  <Insets right="35.0" />
+               </padding>
             </GridPane>
          </children>
       </VBox>
