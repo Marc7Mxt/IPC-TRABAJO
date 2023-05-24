@@ -19,7 +19,9 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafxmlapplication.JavaFXMLApplication;
 
 /**
@@ -27,16 +29,32 @@ import javafxmlapplication.JavaFXMLApplication;
  * @author coryy
  */
 public class MisReservasController implements Initializable {
-
+    
+    private ObservableList<String> datos = null;
+    
     @FXML
     private Button buttonAnular;
     @FXML
     private TableView<String> TableView;
-
-    private ObservableList<String> datos = null;
+    @FXML
+    private TableColumn<?, String> dia;
+    @FXML
+    private TableColumn<String, String> pista;
+    @FXML
+    private TableColumn<?, String> inicio;
+    @FXML
+    private TableColumn<?, String> salida;
+    @FXML
+    private TableColumn<?, String> pagada;
+    @FXML
+    private Button prueba;
+    
+    
+    
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+       //TableView.setItems(datos);
         datos = TableView.getItems();
         buttonAnular.disableProperty().bind(Bindings.equal(-1,TableView.getSelectionModel().selectedIndexProperty()));
     }  
@@ -77,5 +95,11 @@ public class MisReservasController implements Initializable {
             eliminada.setContentText("La reserva fue eliminada con éxito");
             eliminada.showAndWait();
         } 
+    }
+
+    @FXML
+    private void añadirhandle(ActionEvent event) {
+        System.out.println("funciona");
+        datos.add("hola");
     }
 }

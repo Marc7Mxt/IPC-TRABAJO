@@ -61,16 +61,21 @@
             <Button fx:id="buttonAnular" layoutX="527.0" mnemonicParsing="false" onAction="#anularHandle" text="Eliminar" />
             <TableView fx:id="TableView" editable="true" layoutY="-1.0" prefHeight="280.0" prefWidth="511.0">
               <columns>
-                  <TableColumn prefWidth="75.0" text="Día" />
-                <TableColumn prefWidth="75.0" text="Pista" />
-                <TableColumn prefWidth="75.0" text="Hora Inicio" />
-                  <TableColumn prefWidth="75.0" text="Hora Salida" />
-                  <TableColumn prefWidth="75.0" text="Pagada" />
+                  <TableColumn fx:id="dia" prefWidth="75.0" text="Día" />
+                <TableColumn fx:id="pista" prefWidth="75.0" text="Pista" />
+                <TableColumn fx:id="inicio" prefWidth="75.0" text="Hora Inicio" />
+                  <TableColumn fx:id="salida" prefWidth="75.0" text="Hora Salida" />
+                  <TableColumn fx:id="pagada" prefWidth="75.0" text="Pagada" />
               </columns>
                <columnResizePolicy>
                   <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                </columnResizePolicy>
             </TableView>
+            <Button fx:id="prueba" layoutX="515.0" layoutY="36.0" mnemonicParsing="false" onAction="#añadirhandle" prefHeight="25.0" prefWidth="84.0" text="añadir(prueba)">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Button>
          </children></AnchorPane>
    </center>
    <top>
