@@ -39,20 +39,20 @@ import model.ClubDAOException;
  */
 public class MisReservasController implements Initializable {
     
-    private ObservableList<String> datos = null;
+    private ObservableList<Booking> datos = null;
     
     @FXML
     private Button buttonAnular;
     @FXML
-    private TableView<String> TableView;
+    private TableView<Booking> TableView;
     @FXML
     private Button prueba;
     @FXML
-    private TableColumn<LocalDate, String> diaColumn;
+    private TableColumn<Booking, String> diaColumn;
     @FXML
     private TableColumn<Booking, String> pistaColumn;
     @FXML
-    private TableColumn<LocalTime, String> inicioColumn;
+    private TableColumn<Booking, String> inicioColumn;
     @FXML
     private TableColumn<Booking, String> salidaColumn;
     @FXML
@@ -62,10 +62,21 @@ public class MisReservasController implements Initializable {
     //REVISAR DE NUEVO
     private void inicializaModelo(String login) throws ClubDAOException, IOException{
         Club club = Club.getInstance();    
-        diaColumn.setCellValueFactory((diaFila) ->new SimpleStringProperty(diaFila.getValue().toString()));
+        diaColumn.setCellValueFactory((diaFila ->new SimpleStringProperty(diaFila.getValue().getMadeForDay().toString())));
+        pistaColumn.setCellValueFactory(pistaFila -> new SimpleStringProperty(pistaFila.getValue().getCourt().toString()));
+        inicioColumn.setCellValueFactory(inicioFila -> new SimpleStringProperty(inicioFila.getValue().getFromTime().toString()));
+        salidaColumn.setCellValueFactory(salidaFila ->{
+            LocalTime horaInicio = salidaFila.getValue().getFromTime();
+            LocalTime horaSalida = horaInicio.plusMinutes(60);
+            return new SimpleStringProperty(horaSalida.toString());
+        });
         
-        List<Booking> misdatos = new ArrayList<Booking>();
-        club.getUserBookings(login);
+        
+        List<Booking> reservas = club.getUserBookings(login);
+        datos = FXCollections.observableArrayList(reservas);
+        TableView.setItems(datos);
+        //?????????????datos.add(reservas);
+        
     }
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -115,6 +126,6 @@ public class MisReservasController implements Initializable {
     @FXML
     private void añadirhandle(ActionEvent event) {
         System.out.println("funciona");
-        datos.add("hola");
+        
     }
 }
