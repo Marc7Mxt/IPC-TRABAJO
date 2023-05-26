@@ -70,12 +70,15 @@ public class MisReservasController implements Initializable {
             LocalTime horaSalida = horaInicio.plusMinutes(60);
             return new SimpleStringProperty(horaSalida.toString());
         });
+        pagoColumn.setCellValueFactory(pagoFila -> {
+            if(pagoFila.getValue().getPaid()) {return new SimpleStringProperty("Sí");}
+                else{return new SimpleStringProperty("No");}
+        });
         
         
         List<Booking> reservas = club.getUserBookings(login);
         datos = FXCollections.observableArrayList(reservas);
         TableView.setItems(datos);
-        //?????????????datos.add(reservas);
         
     }
     @Override
@@ -107,7 +110,8 @@ public class MisReservasController implements Initializable {
     }
     
     @FXML
-    private void anularHandle(ActionEvent event) {
+    private void anularHandle(ActionEvent event) throws ClubDAOException, IOException {
+        Club club = Club.getInstance();
         Alert anular = new Alert(AlertType.CONFIRMATION);
         anular.setTitle("ANULAR RESERVA");
         anular.setHeaderText(null);
@@ -115,6 +119,7 @@ public class MisReservasController implements Initializable {
         Optional<ButtonType> result = anular.showAndWait();
         if(result.isPresent() && result.get() == ButtonType.OK){
             datos.remove(TableView.getSelectionModel().getSelectedIndex());
+            club.removeBooking(TableView.getSelectionModel().getSelectedItem());
             Alert eliminada = new Alert(AlertType.INFORMATION);
             eliminada.setTitle("RESERVA ELIMINADA");
             eliminada.setHeaderText(null);
