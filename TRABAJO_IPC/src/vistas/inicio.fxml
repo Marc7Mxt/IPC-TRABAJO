@@ -13,34 +13,22 @@
    <bottom>
       <HBox prefHeight="50.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-<<<<<<< HEAD
-            <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="150.0" style="-fx-background-color: #ffad1f;" text="INICIO" textAlignment="CENTER" textFill="WHITE">
-=======
             <Button defaultButton="true" mnemonicParsing="false" pickOnBounds="false" prefHeight="50.0" prefWidth="150.0" text="INICIO" textAlignment="CENTER" wrapText="true">
->>>>>>> 0fcecdf1e75c4cb4dd0457f790040d987bf51e0a
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </Button>
-<<<<<<< HEAD
-            <Button mnemonicParsing="false" onAction="#pistas" onMouseClicked="#pistas" prefHeight="50.0" prefWidth="150.0" style="-fx-background-color: #ffffff; -fx-border-color: #ffad1f; -fx-border-width: 4;" text="VER PISTAS" textAlignment="CENTER" textFill="#ffad1f">
-=======
             <Button mnemonicParsing="false" onAction="#IraPistas" prefHeight="50.0" prefWidth="150.0" text="VER PISTAS" textAlignment="CENTER">
->>>>>>> 0fcecdf1e75c4cb4dd0457f790040d987bf51e0a
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </Button>
-<<<<<<< HEAD
-            <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="150.0" style="-fx-background-color: #ffffff; -fx-border-color: #ffad1f; -fx-border-width: 4;" text="MIS RESERVAS" textAlignment="CENTER" textFill="#ffad1f">
-=======
             <Button fx:id="buttonMisreservas" mnemonicParsing="false" onAction="#IraMisreservas" prefHeight="50.0" prefWidth="150.0" text="MIS RESERVAS" textAlignment="CENTER">
->>>>>>> 0fcecdf1e75c4cb4dd0457f790040d987bf51e0a
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="150.0" style="-fx-background-color: #ffffff; -fx-border-color: #ffad1f; -fx-border-width: 4;" text="USUARIO" textAlignment="CENTER" textFill="#ffad1f">
+            <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="150.0" text="USUARIO" textAlignment="CENTER">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
