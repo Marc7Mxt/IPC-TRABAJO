@@ -6,9 +6,15 @@ package controlador;
 
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
 import javafx.beans.binding.Bindings;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -23,6 +29,9 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafxmlapplication.JavaFXMLApplication;
+import model.Booking;
+import model.Club;
+import model.ClubDAOException;
 
 /**
  *
@@ -30,28 +39,45 @@ import javafxmlapplication.JavaFXMLApplication;
  */
 public class MisReservasController implements Initializable {
     
-    private ObservableList<String> datos = null;
+    private ObservableList<Booking> datos = null;
     
     @FXML
     private Button buttonAnular;
     @FXML
-    private TableView<String> TableView;
-    @FXML
-    private TableColumn<?, String> dia;
-    @FXML
-    private TableColumn<String, String> pista;
-    @FXML
-    private TableColumn<?, String> inicio;
-    @FXML
-    private TableColumn<?, String> salida;
-    @FXML
-    private TableColumn<?, String> pagada;
+    private TableView<Booking> TableView;
     @FXML
     private Button prueba;
+    @FXML
+    private TableColumn<Booking, String> diaColumn;
+    @FXML
+    private TableColumn<Booking, String> pistaColumn;
+    @FXML
+    private TableColumn<Booking, String> inicioColumn;
+    @FXML
+    private TableColumn<Booking, String> salidaColumn;
+    @FXML
+    private TableColumn<Booking, String> pagoColumn;
     
     
-    
-    
+    //REVISAR DE NUEVO
+    private void inicializaModelo(String login) throws ClubDAOException, IOException{
+        Club club = Club.getInstance();    
+        diaColumn.setCellValueFactory((diaFila ->new SimpleStringProperty(diaFila.getValue().getMadeForDay().toString())));
+        pistaColumn.setCellValueFactory(pistaFila -> new SimpleStringProperty(pistaFila.getValue().getCourt().toString()));
+        inicioColumn.setCellValueFactory(inicioFila -> new SimpleStringProperty(inicioFila.getValue().getFromTime().toString()));
+        salidaColumn.setCellValueFactory(salidaFila ->{
+            LocalTime horaInicio = salidaFila.getValue().getFromTime();
+            LocalTime horaSalida = horaInicio.plusMinutes(60);
+            return new SimpleStringProperty(horaSalida.toString());
+        });
+        
+        
+        List<Booking> reservas = club.getUserBookings(login);
+        datos = FXCollections.observableArrayList(reservas);
+        TableView.setItems(datos);
+        //?????????????datos.add(reservas);
+        
+    }
     @Override
     public void initialize(URL url, ResourceBundle rb) {
        //TableView.setItems(datos);
@@ -100,6 +126,6 @@ public class MisReservasController implements Initializable {
     @FXML
     private void añadirhandle(ActionEvent event) {
         System.out.println("funciona");
-        datos.add("hola");
+        
     }
 }
