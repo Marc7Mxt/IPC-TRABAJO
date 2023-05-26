@@ -13,22 +13,22 @@
    <bottom>
       <HBox prefHeight="50.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <Button defaultButton="true" mnemonicParsing="false" pickOnBounds="false" prefHeight="50.0" prefWidth="150.0" text="INICIO" textAlignment="CENTER" wrapText="true">
+            <Button mnemonicParsing="false" pickOnBounds="false" prefHeight="50.0" prefWidth="150.0" style="-fx-background-color: #ffac1a;" text="INICIO" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" onAction="#IraPistas" prefHeight="50.0" prefWidth="150.0" text="VER PISTAS" textAlignment="CENTER">
+            <Button mnemonicParsing="false" onAction="#IraPistas" prefHeight="50.0" prefWidth="150.0" style="-fx-border-color: #ffac1a; -fx-border-width: 2; -fx-background-color: #ffffff;" text="VER PISTAS" textAlignment="CENTER" textFill="#ffac1a">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </Button>
-            <Button fx:id="buttonMisreservas" mnemonicParsing="false" onAction="#IraMisreservas" prefHeight="50.0" prefWidth="150.0" text="MIS RESERVAS" textAlignment="CENTER">
+            <Button fx:id="buttonMisreservas" mnemonicParsing="false" onAction="#IraMisreservas" prefHeight="50.0" prefWidth="150.0" style="-fx-border-color: #ffac1a; -fx-border-width: 2; -fx-background-color: #ffffff;" text="MIS RESERVAS" textAlignment="CENTER" textFill="#ffac1a">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="150.0" text="USUARIO" textAlignment="CENTER">
+            <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="150.0" style="-fx-border-color: #ffac1a; -fx-border-width: 2; -fx-background-color: #ffffff;" text="USUARIO" textAlignment="CENTER" textFill="#ffac1a">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
