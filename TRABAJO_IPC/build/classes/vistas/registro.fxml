@@ -6,6 +6,8 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -16,7 +18,16 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="421.0" prefWidth="616.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.registroController">
    <children>
-      <VBox alignment="CENTER" layoutY="1.0" prefHeight="421.0" prefWidth="616.0" styleClass="fondo" stylesheets="@../estilos/imfondo.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <HBox prefHeight="421.0" prefWidth="616.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <ImageView fitHeight="421.0" fitWidth="616.0" pickOnBounds="true" HBox.hgrow="ALWAYS">
+               <image>
+                  <Image url="@../fotostrabajo/fondotodas.jpeg" />
+               </image>
+            </ImageView>
+         </children>
+      </HBox>
+      <VBox alignment="CENTER" layoutY="1.0" prefHeight="421.0" prefWidth="616.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <Label prefHeight="102.0" prefWidth="234.0" text="Registro de usuario">
                <font>
@@ -47,7 +58,7 @@
                      <padding>
                         <Insets left="40.0" />
                      </padding></Label>
-                  <Label contentDisplay="CENTER" prefHeight="27.0" prefWidth="199.0" text="Nombre" textAlignment="CENTER">
+                  <Label contentDisplay="CENTER" prefHeight="27.0" prefWidth="199.0" text="Nombre">
                      <font>
                         <Font size="18.0" />
                      </font>
