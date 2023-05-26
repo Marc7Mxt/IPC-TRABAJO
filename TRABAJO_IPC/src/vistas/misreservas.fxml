@@ -14,7 +14,7 @@
    <bottom>
       <HBox prefHeight="50.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <Button mnemonicParsing="false" onAction="#IraInicio" prefHeight="50.0" prefWidth="150.0" text="INICIO" textAlignment="CENTER">
+            <Button mnemonicParsing="false" onAction="#IraInicio" prefHeight="50.0" prefWidth="150.0" style="-fx-background-color: #ffffff; -fx-border-color: #ffac1a; -fx-border-width: 2;" text="INICIO" textAlignment="CENTER" textFill="#ffac1a">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
@@ -22,7 +22,7 @@
                   <Insets />
                </HBox.margin>
             </Button>
-            <Button mnemonicParsing="false" onAction="#IraPistas" prefHeight="50.0" prefWidth="150.0" text="VER PISTAS" textAlignment="CENTER">
+            <Button mnemonicParsing="false" onAction="#IraPistas" prefHeight="50.0" prefWidth="150.0" style="-fx-background-color: #ffffff; -fx-border-color: #ffac1a; -fx-border-width: 2;" text="VER PISTAS" textAlignment="CENTER" textFill="#ffac1a">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
@@ -30,7 +30,7 @@
                   <Insets />
                </HBox.margin>
             </Button>
-            <Button defaultButton="true" mnemonicParsing="false" prefHeight="50.0" prefWidth="150.0" text="MIS RESERVAS" textAlignment="CENTER">
+            <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="150.0" style="-fx-background-color: #ffac1a;" text="MIS RESERVAS" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
@@ -38,7 +38,7 @@
                   <Insets />
                </HBox.margin>
             </Button>
-            <Button mnemonicParsing="false" onAction="#IraUsuario" prefHeight="50.0" prefWidth="150.0" text="USUARIO" textAlignment="CENTER">
+            <Button mnemonicParsing="false" onAction="#IraUsuario" prefHeight="50.0" prefWidth="150.0" style="-fx-background-color: #ffffff; -fx-border-color: #ffac1a; -fx-border-width: 2;" text="USUARIO" textAlignment="CENTER" textFill="#ffac1a">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
