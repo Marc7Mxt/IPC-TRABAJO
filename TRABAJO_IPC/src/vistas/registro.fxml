@@ -6,6 +6,8 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -16,7 +18,16 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="421.0" prefWidth="616.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.registroController">
    <children>
-      <VBox alignment="CENTER" layoutY="1.0" prefHeight="400.0" prefWidth="507.0">
+      <HBox prefHeight="421.0" prefWidth="616.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <ImageView fitHeight="421.0" fitWidth="616.0" pickOnBounds="true" HBox.hgrow="ALWAYS">
+               <image>
+                  <Image url="@../fotostrabajo/fondotodas.jpeg" />
+               </image>
+            </ImageView>
+         </children>
+      </HBox>
+      <VBox alignment="CENTER" layoutY="1.0" prefHeight="421.0" prefWidth="616.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <Label prefHeight="102.0" prefWidth="234.0" text="Registro de usuario">
                <font>
@@ -103,7 +114,10 @@
                         <Insets left="40.0" />
                      </padding></Label>
                   <TextField fx:id="textfieldNombreRegistro" prefHeight="8.0" prefWidth="314.0" GridPane.columnIndex="1" />
-                  <TextField fx:id="textfieldApellidosRegistro" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <TextField fx:id="textfieldApellidosRegistro" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                     <GridPane.margin>
+                        <Insets />
+                     </GridPane.margin></TextField>
                   <TextField fx:id="textfieldTlfRegistro" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                   <TextField fx:id="textfieldNicknameRegistro" prefHeight="26.0" prefWidth="348.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                   <PasswordField fx:id="passfieldRegistro" GridPane.columnIndex="1" GridPane.rowIndex="4" />
@@ -129,6 +143,9 @@
                   </Label>
                   <PasswordField fx:id="passfieldRepRegistro" GridPane.columnIndex="1" GridPane.rowIndex="5" />
                </children>
+               <padding>
+                  <Insets right="35.0" />
+               </padding>
             </GridPane>
          </children>
       </VBox>
