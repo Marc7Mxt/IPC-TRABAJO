@@ -75,7 +75,7 @@
                      <padding>
                         <Insets left="40.0" />
                      </padding></Label>
-                  <Label prefHeight="18.0" prefWidth="305.0" text="Nickname" GridPane.rowIndex="3">
+                  <Label prefHeight="18.0" prefWidth="305.0" text="Nombre de usuario" GridPane.rowIndex="3">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -119,11 +119,11 @@
                         <Insets />
                      </GridPane.margin></TextField>
                   <TextField fx:id="textfieldTlfRegistro" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                  <TextField fx:id="textfieldNicknameRegistro" prefHeight="26.0" prefWidth="348.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                  <PasswordField fx:id="passfieldRegistro" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                  <TextField fx:id="textfieldNicknameRegistro" prefHeight="26.0" prefWidth="348.0" promptText="No será posible modificarlo más tarde" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <PasswordField fx:id="passfieldRegistro" promptText="Debe contener mínimo 6 carácteres" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                   <ComboBox fx:id="comboBoxRegistro" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="8" />
-                  <TextField fx:id="tarjetaRegistro" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-                  <TextField fx:id="svcRegistro" prefHeight="26.0" prefWidth="403.0" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                  <TextField fx:id="tarjetaRegistro" promptText="Escriba 16 dígitos" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                  <TextField fx:id="svcRegistro" prefHeight="26.0" prefWidth="403.0" promptText="Escriba 3 dígitos" GridPane.columnIndex="1" GridPane.rowIndex="7" />
                   <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="9">
                      <children>
                         <Button fx:id="botonRegistrar" mnemonicParsing="false" onAction="#registrarClicked" prefHeight="30.0" prefWidth="96.0" text="Registrarse">
@@ -141,7 +141,7 @@
                         <Insets left="40.0" />
                      </padding>
                   </Label>
-                  <PasswordField fx:id="passfieldRepRegistro" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                  <PasswordField fx:id="passfieldRepRegistro" promptText="Repita su contraseña escrita anteriormente, por favor" GridPane.columnIndex="1" GridPane.rowIndex="5" />
                </children>
                <padding>
                   <Insets right="35.0" />

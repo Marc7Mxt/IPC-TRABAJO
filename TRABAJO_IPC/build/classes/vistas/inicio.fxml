@@ -28,7 +28,7 @@
                   <Font name="System Bold" size="12.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="150.0" style="-fx-border-color: #ffac1a; -fx-border-width: 2; -fx-background-color: #ffffff;" text="USUARIO" textAlignment="CENTER" textFill="#ffac1a">
+            <Button fx:id="botonUsuario" mnemonicParsing="false" onAction="#usuarioClicked" prefHeight="50.0" prefWidth="150.0" style="-fx-border-color: #ffac1a; -fx-border-width: 2; -fx-background-color: #ffffff;" text="USUARIO" textAlignment="CENTER" textFill="#ffac1a">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>

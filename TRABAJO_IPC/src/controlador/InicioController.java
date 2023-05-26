@@ -32,6 +32,8 @@ public class InicioController implements Initializable {
     private Text lema;
     @FXML
     private Button buttonMisreservas;
+    @FXML
+    private Button botonUsuario;
 
     /**
      * Initializes the controller class.
@@ -56,6 +58,14 @@ public class InicioController implements Initializable {
     @FXML
     private void IraMisreservas(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/vistas/misreservas.fxml"));
+        Parent root = loader.load();
+        
+        JavaFXMLApplication.setRoot(root);
+    }
+
+    @FXML
+    private void usuarioClicked(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/vistas/ventanaDatos.fxml"));
         Parent root = loader.load();
         
         JavaFXMLApplication.setRoot(root);
