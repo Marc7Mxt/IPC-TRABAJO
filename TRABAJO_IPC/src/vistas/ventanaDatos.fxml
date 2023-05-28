@@ -14,8 +14,7 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="fondo" stylesheets="@../estilos/imfondo.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller=".ventanaDatosController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="fondo" stylesheets="@../estilos/imfondo.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.ventanaDatosController">
    <children>
       <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -109,9 +108,14 @@
                         <TextField fx:id="svcRegistro" prefHeight="26.0" prefWidth="403.0" promptText="Escriba 3 dígitos" GridPane.columnIndex="1" GridPane.rowIndex="6" />
                         <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="7">
                            <children>
-                              <Button fx:id="botonRegistrar" mnemonicParsing="false" onAction="#registrarClicked" prefHeight="30.0" prefWidth="113.0" style="-fx-background-color: #ffac1a;" text="Actualizar datos" textFill="WHITE">
+                              <Button fx:id="botonVolver" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#volverClicked" prefHeight="31.0" prefWidth="67.0" stylesheets="@../estilos/estiloLogin.css" text="Volver" textFill="#ffad1f" HBox.hgrow="ALWAYS">
                                  <HBox.margin>
-                                    <Insets left="220.0" />
+                                    <Insets left="130.0" />
+                                 </HBox.margin>
+                              </Button>
+                              <Button fx:id="botonRegistrar" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#registrarClicked" prefHeight="30.0" prefWidth="113.0" style="-fx-background-color: #ffac1a;" text="Actualizar datos" textFill="WHITE" HBox.hgrow="ALWAYS">
+                                 <HBox.margin>
+                                    <Insets left="20.0" />
                                  </HBox.margin>
                               </Button>
                            </children>

@@ -58,8 +58,8 @@
    <center>
       <AnchorPane prefHeight="250.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="buttonAnular" layoutX="527.0" mnemonicParsing="false" onAction="#anularHandle" text="Eliminar" />
-            <TableView fx:id="TableView" editable="true" layoutY="-1.0" prefHeight="280.0" prefWidth="511.0">
+            <Button fx:id="buttonAnular" layoutX="531.0" layoutY="1.0" mnemonicParsing="false" onAction="#anularHandle" text="Eliminar" />
+            <TableView fx:id="TableView" layoutX="14.0" prefHeight="266.0" prefWidth="511.0" scaleShape="false">
               <columns>
                   <TableColumn fx:id="diaColumn" prefWidth="75.0" text="Día" />
                 <TableColumn fx:id="pistaColumn" prefWidth="75.0" text="Pista" />
@@ -71,17 +71,12 @@
                   <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                </columnResizePolicy>
             </TableView>
-            <Button fx:id="prueba" layoutX="515.0" layoutY="36.0" mnemonicParsing="false" onAction="#añadirhandle" prefHeight="25.0" prefWidth="84.0" text="añadir(prueba)">
-               <font>
-                  <Font size="10.0" />
-               </font>
-            </Button>
          </children></AnchorPane>
    </center>
    <top>
       <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="72.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
-            <Label layoutX="233.0" layoutY="27.0" text="Mis Reservas">
+            <Label layoutX="233.0" layoutY="25.0" text="Mis Reservas">
                <font>
                   <Font size="24.0" />
                </font>

@@ -7,6 +7,8 @@ package controlador;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -18,6 +20,8 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafxmlapplication.JavaFXMLApplication;
+import model.Club;
+import model.ClubDAOException;
 
 /**
  * FXML Controller class
@@ -33,7 +37,7 @@ public class InicioController implements Initializable {
     @FXML
     private Button buttonMisreservas;
     @FXML
-    private Button botonUsuario;
+    private Button buttonUsuario;
 
     /**
      * Initializes the controller class.
@@ -42,7 +46,20 @@ public class InicioController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        /*
+        try {
+            Club club = Club.getInstance();
+            
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/vistas/misreservas.fxml"));
+            Parent root = loader.load();
+            MisReservasController misreservas = loader.getController();
+            misreservas.inicializaModelo("user1");
+            System.out.println(club.getBookings());
+            
+        } catch (ClubDAOException | IOException ex) {
+            Logger.getLogger(InicioController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        */
     }    
 
         
@@ -63,8 +80,9 @@ public class InicioController implements Initializable {
         JavaFXMLApplication.setRoot(root);
     }
 
+
     @FXML
-    private void usuarioClicked(ActionEvent event) throws IOException {
+    private void IraUsuario(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/vistas/ventanaDatos.fxml"));
         Parent root = loader.load();
         
