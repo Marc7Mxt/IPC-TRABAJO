@@ -8,10 +8,15 @@ import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.beans.binding.Bindings;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
@@ -32,6 +37,7 @@ import javafxmlapplication.JavaFXMLApplication;
 import model.Booking;
 import model.Club;
 import model.ClubDAOException;
+import model.Court;
 
 /**
  *
@@ -46,8 +52,6 @@ public class MisReservasController implements Initializable {
     @FXML
     private TableView<Booking> TableView;
     @FXML
-    private Button prueba;
-    @FXML
     private TableColumn<Booking, String> diaColumn;
     @FXML
     private TableColumn<Booking, String> pistaColumn;
@@ -58,12 +62,19 @@ public class MisReservasController implements Initializable {
     @FXML
     private TableColumn<Booking, String> pagoColumn;
     
+    private int maxFilas = 10;
     
     //REVISAR DE NUEVO
-    private void inicializaModelo(String login) throws ClubDAOException, IOException{
-        Club club = Club.getInstance();    
+    public  void inicializaModelo(String login) throws ClubDAOException, IOException{
+        Club club = Club.getInstance();
         diaColumn.setCellValueFactory((diaFila ->new SimpleStringProperty(diaFila.getValue().getMadeForDay().toString())));
-        pistaColumn.setCellValueFactory(pistaFila -> new SimpleStringProperty(pistaFila.getValue().getCourt().toString()));
+        pistaColumn.setCellValueFactory(pistaFila -> {
+            ArrayList<Court> pistas = new ArrayList<Court>(club.getCourts());
+            int index = pistas.indexOf(pistaFila.getValue().getCourt());
+            int numeroPista = index + 1;
+            return new SimpleStringProperty("Pista "+String.valueOf(numeroPista));
+        });
+        //pistaColumn.setCellValueFactory(pistaFila -> new SimpleStringProperty(pistaFila.getValue().getCourt().toString()));
         inicioColumn.setCellValueFactory(inicioFila -> new SimpleStringProperty(inicioFila.getValue().getFromTime().toString()));
         salidaColumn.setCellValueFactory(salidaFila ->{
             LocalTime horaInicio = salidaFila.getValue().getFromTime();
@@ -74,17 +85,41 @@ public class MisReservasController implements Initializable {
             if(pagoFila.getValue().getPaid()) {return new SimpleStringProperty("Sí");}
                 else{return new SimpleStringProperty("No");}
         });
+            //OPCIÓN 1
+            ArrayList<Booking> reservas = new ArrayList<>(club.getUserBookings(login)); // Lista de reservas
+            reservas.removeIf(booking -> {
+               LocalDate hoy = LocalDate.now();
+               LocalTime ahora = LocalTime.now();
+               return booking.getMadeForDay().isBefore(hoy) || (booking.getMadeForDay().isEqual(hoy) && booking.getFromTime().isBefore(ahora));
+            });
+            //reservas.removeIf(booking -> booking.getMadeForDay().isBefore(LocalDate.now())); //Quita aquellas anteriores al día actual
+            Comparator<Booking> reservasComparador = Comparator.comparing(Booking::getMadeForDay).thenComparing(Booking::getFromTime);
+            reservas.sort(reservasComparador); //Ordena la lista de reservas según su día y hora
+            ArrayList<Booking> ultimas10Reservas = new ArrayList<>(reservas.subList(0, Math.min(10, reservas.size()))); //10 últimas reservas
+
+            // Invierte el orden de las reservas para que la más reciente esté en la parte superior
+            //Collections.reverse(ultimas10Reservas);
+            datos = FXCollections.observableArrayList(ultimas10Reservas);// Asigna el modelo de datos a la TableView
+            TableView.setItems(datos);
         
-        
-        List<Booking> reservas = club.getUserBookings(login);
+            //OPCIÓN 3
+        /*
+        ArrayList<Booking> reservas = new ArrayList<Booking>(club.getUserBookings(login));
+        reservas.sort(Comparator.comparing(Booking::getMadeForDay).reversed());
         datos = FXCollections.observableArrayList(reservas);
+        datos.setAll(reservas.subList(0, Math.min(maxFilas, reservas.size())));
         TableView.setItems(datos);
-        
+        */
     }
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-       //TableView.setItems(datos);
-        datos = TableView.getItems();
+        try {
+            inicializaModelo("user5");
+        } catch (ClubDAOException ex) {
+            Logger.getLogger(MisReservasController.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(MisReservasController.class.getName()).log(Level.SEVERE, null, ex);
+        }
         buttonAnular.disableProperty().bind(Bindings.equal(-1,TableView.getSelectionModel().selectedIndexProperty()));
     }  
     
@@ -105,32 +140,37 @@ public class MisReservasController implements Initializable {
     }
     
     @FXML
-    private void IraUsuario(ActionEvent event) {
+    private void IraUsuario(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/vistas/ventanaDatos.fxml"));
+        Parent root = loader.load();
         
+        JavaFXMLApplication.setRoot(root);
     }
     
     @FXML
     private void anularHandle(ActionEvent event) throws ClubDAOException, IOException {
         Club club = Club.getInstance();
         Alert anular = new Alert(AlertType.CONFIRMATION);
-        anular.setTitle("ANULAR RESERVA");
+        anular.setTitle("Anular Reserva");
         anular.setHeaderText(null);
-        anular.setContentText("¿Quieres anular esta reserva?");
+        anular.setContentText("¿Quieres anular la reserva del día " + TableView.getSelectionModel().getSelectedItem().getMadeForDay().toString() + " a las " + TableView.getSelectionModel().getSelectedItem().getFromTime().toString() + "?");
         Optional<ButtonType> result = anular.showAndWait();
         if(result.isPresent() && result.get() == ButtonType.OK){
-            datos.remove(TableView.getSelectionModel().getSelectedIndex());
-            club.removeBooking(TableView.getSelectionModel().getSelectedItem());
-            Alert eliminada = new Alert(AlertType.INFORMATION);
-            eliminada.setTitle("RESERVA ELIMINADA");
-            eliminada.setHeaderText(null);
-            eliminada.setContentText("La reserva fue eliminada con éxito");
-            eliminada.showAndWait();
+            if(ChronoUnit.HOURS.between(LocalDate.now().atStartOfDay(),TableView.getSelectionModel().getSelectedItem().getMadeForDay().atStartOfDay()) <= 24){
+                Alert fueradeplazo = new Alert(AlertType.INFORMATION);
+                fueradeplazo.setTitle("Anulación fuera de plazo");
+                fueradeplazo.setHeaderText(null);
+                fueradeplazo.setContentText("La anulación no ha tenido éxito debido a que se encuentra fuera de plazo");
+                fueradeplazo.showAndWait();
+            }else{
+                club.removeBooking(TableView.getSelectionModel().getSelectedItem());
+                datos.remove(TableView.getSelectionModel().getSelectedIndex());
+                Alert eliminada = new Alert(AlertType.INFORMATION);
+                eliminada.setTitle("Reserva Eliminada");
+                eliminada.setHeaderText(null);
+                eliminada.setContentText("La reserva fue eliminada con éxito");
+                eliminada.showAndWait();
+            }
         } 
-    }
-
-    @FXML
-    private void añadirhandle(ActionEvent event) {
-        System.out.println("funciona");
-        
     }
 }
