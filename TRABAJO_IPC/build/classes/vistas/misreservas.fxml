@@ -2,13 +2,13 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="body" stylesheets="@../estilos/imfondo.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.MisReservasController">
    <bottom>
@@ -58,8 +58,8 @@
    <center>
       <AnchorPane prefHeight="250.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="buttonAnular" layoutX="531.0" layoutY="1.0" mnemonicParsing="false" onAction="#anularHandle" text="Eliminar" />
-            <TableView fx:id="TableView" layoutX="14.0" prefHeight="266.0" prefWidth="511.0" scaleShape="false">
+            <Button fx:id="buttonAnular" layoutX="534.0" layoutY="-15.0" mnemonicParsing="false" onAction="#anularHandle" text="Eliminar" />
+            <TableView fx:id="TableView" layoutX="14.0" layoutY="-15.0" prefHeight="266.0" prefWidth="511.0" scaleShape="false">
               <columns>
                   <TableColumn fx:id="diaColumn" prefWidth="75.0" text="Día" />
                 <TableColumn fx:id="pistaColumn" prefWidth="75.0" text="Pista" />
@@ -76,11 +76,11 @@
    <top>
       <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="72.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
-            <Label layoutX="233.0" layoutY="25.0" text="Mis Reservas">
+            <Text fill="#ffc916" layoutX="224.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-stroke-width: 1px; -fx-stroke: black;" text="Mis Reservas" textAlignment="CENTER">
                <font>
-                  <Font size="24.0" />
+                  <Font name="System Bold" size="25.0" />
                </font>
-            </Label>
+            </Text>
          </children></AnchorPane>
    </top>
 </BorderPane>
