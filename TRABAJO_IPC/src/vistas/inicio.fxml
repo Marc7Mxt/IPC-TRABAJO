@@ -18,17 +18,17 @@
                   <Font name="System Bold" size="12.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" onAction="#IraPistas" prefHeight="50.0" prefWidth="150.0" style="-fx-border-color: #ffac1a; -fx-border-width: 2; -fx-background-color: #ffffff;" text="VER PISTAS" textAlignment="CENTER" textFill="#ffac1a">
+            <Button fx:id="botonPistas" mnemonicParsing="false" onAction="#IraPistas" prefHeight="50.0" prefWidth="150.0" style="-fx-border-color: #ffac1a; -fx-border-width: 2; -fx-background-color: #ffffff;" text="VER PISTAS" textAlignment="CENTER" textFill="#ffac1a">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </Button>
-            <Button fx:id="buttonMisreservas" mnemonicParsing="false" onAction="#IraMisreservas" prefHeight="50.0" prefWidth="150.0" style="-fx-border-color: #ffac1a; -fx-border-width: 2; -fx-background-color: #ffffff;" text="MIS RESERVAS" textAlignment="CENTER" textFill="#ffac1a">
+            <Button fx:id="botonMisReservas" mnemonicParsing="false" onAction="#IraMisreservas" prefHeight="50.0" prefWidth="150.0" style="-fx-border-color: #ffac1a; -fx-border-width: 2; -fx-background-color: #ffffff;" text="MIS RESERVAS" textAlignment="CENTER" textFill="#ffac1a">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </Button>
-            <Button fx:id="buttonUsuario" mnemonicParsing="false" onAction="#IraUsuario" prefHeight="50.0" prefWidth="150.0" style="-fx-border-color: #ffac1a; -fx-border-width: 2; -fx-background-color: #ffffff;" text="USUARIO" textAlignment="CENTER" textFill="#ffac1a">
+            <Button fx:id="botonUsuario" mnemonicParsing="false" onAction="#IraUsuario" prefHeight="50.0" prefWidth="150.0" style="-fx-border-color: #ffac1a; -fx-border-width: 2; -fx-background-color: #ffffff;" text="USUARIO" textAlignment="CENTER" textFill="#ffac1a">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>

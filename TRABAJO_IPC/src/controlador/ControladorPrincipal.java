@@ -6,6 +6,7 @@ package controlador;
 
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import model.Member;
 
 /**
  *
@@ -15,6 +16,8 @@ public class ControladorPrincipal {
     
     private StringProperty nicknameProperty = new SimpleStringProperty();
     private StringProperty passwordProperty = new SimpleStringProperty();
+    
+    private static Member user;
     
     private static boolean loggedIn = false;
 
@@ -32,5 +35,13 @@ public class ControladorPrincipal {
     
     public StringProperty getPasswordProperty() {
         return passwordProperty;
+    }
+    
+    public static void setUsuario(Member m) {
+        ControladorPrincipal.user = m;
+    }
+    
+    public static Member getUsuario() {
+        return user;
     }
 }

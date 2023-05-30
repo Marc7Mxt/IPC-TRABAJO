@@ -22,6 +22,7 @@ import javafx.stage.Stage;
 import javafxmlapplication.JavaFXMLApplication;
 import model.Club;
 import model.ClubDAOException;
+import model.Member;
 
 /**
  * FXML Controller class
@@ -35,9 +36,18 @@ public class InicioController implements Initializable {
     @FXML
     private Text lema;
     @FXML
-    private Button buttonMisreservas;
+    private Button botonPistas;
     @FXML
-    private Button buttonUsuario;
+    private Button botonMisReservas;
+    @FXML
+    private Button botonUsuario;
+    
+    private Member user;
+    
+    public void initMember(String nick, String pass) throws ClubDAOException, IOException{
+        Club c = Club.getInstance();
+        user = c.getMemberByCredentials(nick, pass);
+    }
 
     /**
      * Initializes the controller class.
@@ -46,27 +56,18 @@ public class InicioController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        /*
         try {
-            Club.getInstance().setInitialData();
-            /*
-            try {
-            Club club = Club.getInstance();
-            
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/vistas/misreservas.fxml"));
-            Parent root = loader.load();
-            MisReservasController misreservas = loader.getController();
-            misreservas.inicializaModelo("user1");
-            System.out.println(club.getBookings());
-            
-            } catch (ClubDAOException | IOException ex) {
-            Logger.getLogger(InicioController.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            */
-        } catch (ClubDAOException ex) {
-            Logger.getLogger(InicioController.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(InicioController.class.getName()).log(Level.SEVERE, null, ex);
+        Club club = Club.getInstance();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/vistas/misreservas.fxml"));
+        Parent root = loader.load();
+        MisReservasController misreservas = loader.getController();
+        misreservas.inicializaModelo("user1");
+        System.out.println(club.getBookings());
+        } catch (ClubDAOException | IOException ex) {
+        Logger.getLogger(InicioController.class.getName()).log(Level.SEVERE, null, ex);
         }
+         */ 
     }    
 
         
@@ -90,7 +91,7 @@ public class InicioController implements Initializable {
 
 
     @FXML
-    private void IraUsuario(ActionEvent event) throws IOException {
+    private void IraUsuario(ActionEvent event) throws IOException, ClubDAOException {
         if(ControladorPrincipal.isLogged()){
             verVentanaUsuario();
         } else {
@@ -98,16 +99,18 @@ public class InicioController implements Initializable {
         }
     }
     
-    private void verVentanaUsuario() {
+    private void verVentanaUsuario() throws ClubDAOException {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/vistas/ventanaDatos.fxml"));
             Parent userRoot = loader.load();
+            ventanaDatosController ventanaDatosController = loader.getController();
+            ventanaDatosController.initMember(user);
             Stage userStage = new Stage();
             userStage.setScene(new Scene(userRoot));
             userStage.show();
 
             // Opcionalmente, puedes cerrar la ventana actual si es necesario
-            Stage currentStage = (Stage) buttonUsuario.getScene().getWindow();
+            Stage currentStage = (Stage) botonUsuario.getScene().getWindow();
             currentStage.close();
         } catch (IOException e) {
             // Manejo de errores al cargar la ventana de usuario
@@ -124,7 +127,7 @@ public class InicioController implements Initializable {
             loginStage.show();
 
             // Opcionalmente, puedes cerrar la ventana actual si es necesario
-            Stage currentStage = (Stage) buttonUsuario.getScene().getWindow();
+            Stage currentStage = (Stage) botonUsuario.getScene().getWindow();
             currentStage.close();
         } catch (IOException e) {
             // Manejo de errores al cargar la ventana de inicio de sesión
@@ -140,7 +143,7 @@ public class InicioController implements Initializable {
             loginStage.show();
 
             // Opcionalmente, puedes cerrar la ventana actual si es necesario
-            Stage currentStage = (Stage) buttonUsuario.getScene().getWindow();
+            Stage currentStage = (Stage) botonUsuario.getScene().getWindow();
             currentStage.close();
         } catch (IOException e) {
             

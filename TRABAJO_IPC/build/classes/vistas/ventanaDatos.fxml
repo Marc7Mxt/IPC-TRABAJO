@@ -13,22 +13,21 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.ventanaDatosController">
    <children>
       <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <ImageView fitHeight="400.0" fitWidth="600.0" pickOnBounds="true">
+            <ImageView fx:id="imagenUsuario" fitHeight="400.0" fitWidth="600.0" pickOnBounds="true">
                <image>
                   <Image url="@../fotostrabajo/fondotodas.jpeg" />
                </image>
             </ImageView>
             <VBox alignment="CENTER" layoutY="1.0" prefHeight="421.0" prefWidth="616.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <Circle fill="DODGERBLUE" radius="51.0" stroke="BLACK" strokeType="INSIDE" />
-                  <Label prefHeight="102.0" prefWidth="234.0" text="Nombre de usuario">
+                  <ImageView fx:id="imagenUsuario" fitHeight="89.0" fitWidth="128.0" pickOnBounds="true" preserveRatio="true" />
+                  <Label fx:id="nickName" alignment="CENTER" prefHeight="38.0" prefWidth="598.0" text="Nombre de usuario" textAlignment="CENTER">
                      <font>
                         <Font size="26.0" />
                      </font>

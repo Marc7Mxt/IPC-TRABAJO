@@ -38,6 +38,7 @@ import model.Booking;
 import model.Club;
 import model.ClubDAOException;
 import model.Court;
+import model.Member;
 
 /**
  *
@@ -63,6 +64,8 @@ public class MisReservasController implements Initializable {
     private TableColumn<Booking, String> pagoColumn;
     
     private int maxFilas = 10;
+    
+    private Member user;
     
     //REVISAR DE NUEVO
     public  void inicializaModelo(String login) throws ClubDAOException, IOException{
@@ -173,4 +176,8 @@ public class MisReservasController implements Initializable {
             }
         } 
     }
+    
+     //public void initData(Member m) {
+       // this.user = m;
+    // }
 }

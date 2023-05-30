@@ -48,9 +48,6 @@ public class LoginController implements Initializable {
     private Hyperlink hipervinculoRegistro;
     
     private Member user;
-    
-    
-
     /**
      * Initializes the controller class.
      */
@@ -96,7 +93,20 @@ public class LoginController implements Initializable {
 
             // Actualizar la clase ControladorPrincipal si es necesario
             ControladorPrincipal.cambiarLoggedIn(true);
-            // ControladorPrincipal controladorPrincipal = ControladorPrincipal.getInstance();
+            FXMLLoader miCargador = new FXMLLoader(getClass().getResource("/vistas/inicio.fxml"));
+            Parent root = miCargador.load();
+            InicioController controlador = miCargador.getController();
+            controlador.initMember(nickname, password);
+            Scene scene = new Scene(root, 600, 500);
+            Stage stage2 = new Stage();
+            stage2.setScene(scene);
+            stage2.setTitle("CLUB DE TENIS GREENBALL");
+            stage2.setResizable(false);
+            stage2.initModality(Modality.APPLICATION_MODAL);
+            stage2.show();
+            stage2 = (Stage) botonEntrar.getScene().getWindow();
+            stage2.close(); 
+
         }
     }
 
@@ -111,7 +121,18 @@ public class LoginController implements Initializable {
 
 
     @FXML
-    private void volverClicked(ActionEvent event) {
+    private void volverClicked(ActionEvent event) throws IOException {
+        /*FXMLLoader miCargador = new FXMLLoader(getClass().getResource("/vistas/inicio.fxml"));
+        Parent root = miCargador.load();
+        Scene scene = new Scene(root, 600, 500);
+        Stage stage = new Stage();
+        stage.setScene(scene);
+        stage.setTitle("CLUB DE TENIS GREENBALL");
+        stage.setResizable(false);
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.show(); */
+        Stage stage = (Stage) botonVolver.getScene().getWindow();
+        stage.close();
         
         
     }
@@ -120,8 +141,6 @@ public class LoginController implements Initializable {
     private void registrarClicked(ActionEvent event) throws IOException {
         FXMLLoader miCargador = new FXMLLoader(getClass().getResource("/vistas/registro.fxml"));
         Parent root = miCargador.load();
-        
-        
         Scene scene = new Scene(root, 600, 500);
         Stage stage = new Stage();
         stage.setScene(scene);

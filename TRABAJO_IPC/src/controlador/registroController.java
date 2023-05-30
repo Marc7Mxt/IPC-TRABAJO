@@ -118,7 +118,7 @@ public class registroController implements Initializable {
         
         // revisar que todos los campos son correctos
         if(validarDatos(textfieldNombreRegistro) && validarDatos(textfieldApellidosRegistro) && validarTlf(textfieldTlfRegistro)
-                && validarNick(textfieldNicknameRegistro) && validarContraseña(passfieldRegistro, passfieldRepRegistro)
+                && validarNickname(textfieldNicknameRegistro) && validarPassword(passfieldRegistro, passfieldRepRegistro)
                 && validarCredit(tarjetaRegistro, svcRegistro)){
             int svc = 0;
             // si han completado el campo svc cambiarlo a INTEGER
@@ -190,7 +190,7 @@ class ImagenTabCell extends ComboBoxListCell<String> {
     }
     
     // metodo para saber si el TextField del NICK es valido
-    private boolean validarNick(TextField t) throws ClubDAOException, IOException{
+    private boolean validarNickname(TextField t) throws ClubDAOException, IOException{
         Club club = Club.getInstance();
         boolean existe = club.existsLogin(t.getText());
         String s = t.getText();
@@ -198,7 +198,7 @@ class ImagenTabCell extends ComboBoxListCell<String> {
     }
     
     // metodo para saber si el TextField de la CONTRASEÑA es valido
-    private boolean validarContraseña(TextField t, TextField t1){
+    private boolean validarPassword(TextField t, TextField t1){
         String s = t.getText();
         String r = "^(?=.*[0-9])"
                 + "(?=.*[A-Z])"
