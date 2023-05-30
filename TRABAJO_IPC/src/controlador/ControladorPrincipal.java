@@ -4,11 +4,18 @@
  */
 package controlador;
 
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
+
 /**
  *
  * @author Marc
  */
 public class ControladorPrincipal {
+    
+    private StringProperty nicknameProperty = new SimpleStringProperty();
+    private StringProperty passwordProperty = new SimpleStringProperty();
+    
     private static boolean loggedIn = false;
 
     public static void cambiarLoggedIn(boolean  b) {
@@ -17,5 +24,13 @@ public class ControladorPrincipal {
 
     public static boolean isLogged() {
         return loggedIn;
+    }
+    
+    public StringProperty getNicknameProperty() {
+        return nicknameProperty;
+    }
+    
+    public StringProperty getPasswordProperty() {
+        return passwordProperty;
     }
 }

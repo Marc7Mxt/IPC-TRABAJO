@@ -69,29 +69,46 @@ public class LoginController implements Initializable {
         String nickname = textfieldNicknameLogin.getText();
         String password = passfieldLogin.getText();
         Club club = Club.getInstance();
-        if(club.existsLogin(nickname)){
-            user = club.getMemberByCredentials(nickname, password);
-            if(user == null){
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setTitle("Error");
-                alert.setHeaderText(null);
-                alert.setContentText("Usuario y/o contraseña erróneos");
-                alert.showAndWait();
-            } else {
-                Stage stage = new Stage();
-                stage = (Stage) botonEntrar.getScene().getWindow();
-                stage.close();
-                
-            }
+        user = club.getMemberByCredentials(nickname, password);
+    
+        // Verificar si los campos están vacíos
+        if (nickname.isEmpty() || password.isEmpty()) {
+            mostrarAlerta("Por favor rellena los campos para poder iniciar sesión");
+            return;
+        }
+        // Verificar si el nickname existe en la base de datos
+        if (!club.existsLogin(nickname)) {
+            mostrarAlerta("No existe el nickname. Por favor regístrate");
+            return;
+        }
+        // Verificar si las credenciales coinciden con la base de datos
+        if (user != null) {
+            // Obtener la referencia a la ventana actual
+            Stage stage = (Stage) botonEntrar.getScene().getWindow();
+
+            // Cerrar la ventana de inicio de sesión
+            stage.close();
+
+            // Mostrar mensaje de inicio de sesión exitoso
+            mostrarAlerta("Inicio de sesión con éxito, bienvenido " + nickname);
+
+            // Realizar acciones adicionales después del inicio de sesión exitoso
+
+            // Actualizar la clase ControladorPrincipal si es necesario
             ControladorPrincipal.cambiarLoggedIn(true);
-        } else {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setTitle("Error");
-                alert.setHeaderText(null);
-                alert.setContentText("No existe el nickname. Por favor registrate");
-                alert.showAndWait();
-        } 
+            // ControladorPrincipal controladorPrincipal = ControladorPrincipal.getInstance();
+        }
     }
+
+    private void mostrarAlerta(String mensaje) {
+    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+    alert.setTitle("Información");
+    alert.setHeaderText(null);
+    alert.setContentText(mensaje);
+    alert.showAndWait();
+}
+
+
 
     @FXML
     private void volverClicked(ActionEvent event) {

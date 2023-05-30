@@ -133,7 +133,7 @@ public class InicioController implements Initializable {
     }
     private void verVentanaMisReservas(){
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/vistas/login.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/vistas/misreservas.fxml"));
             Parent loginRoot = loader.load();
             Stage loginStage = new Stage();
             loginStage.setScene(new Scene(loginRoot));
