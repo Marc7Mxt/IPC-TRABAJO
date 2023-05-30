@@ -3,12 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/admin/Desktop/IPC/trabajo/github/IPC-TRABAJO/TRABAJO_IPC/src/controlador/InicioController.java</file>
-            <file>file:/C:/Users/admin/Desktop/IPC/trabajo/github/IPC-TRABAJO/TRABAJO_IPC/src/vistas/inicio.fxml</file>
-            <file>file:/C:/Users/admin/Desktop/IPC/trabajo/github/IPC-TRABAJO/TRABAJO_IPC/src/javafxmlapplication/JavaFXMLApplication.java</file>
-            <file>file:/C:/Users/admin/Desktop/IPC/trabajo/github/IPC-TRABAJO/TRABAJO_IPC/src/ventanaDatosController.java</file>
-            <file>file:/C:/Users/admin/Desktop/IPC/trabajo/github/IPC-TRABAJO/TRABAJO_IPC/src/vistas/ventanaDatos.fxml</file>
-            <file>file:/C:/Users/admin/Desktop/IPC/trabajo/github/IPC-TRABAJO/TRABAJO_IPC/src/controlador/MisReservasController.java</file>
+            <file>file:/C:/Users/marcn/OneDrive/Escritorio/ING%20INFORMATICA/github/IPC-TRABAJO/TRABAJO_IPC/src/controlador/LoginController.java</file>
+            <file>file:/C:/Users/marcn/OneDrive/Escritorio/ING%20INFORMATICA/github/IPC-TRABAJO/TRABAJO_IPC/src/controlador/PistasPruebaController.java</file>
+            <file>file:/C:/Users/marcn/OneDrive/Escritorio/ING%20INFORMATICA/github/IPC-TRABAJO/TRABAJO_IPC/src/controlador/ControladorPrincipal.java</file>
+            <file>file:/C:/Users/marcn/OneDrive/Escritorio/ING%20INFORMATICA/github/IPC-TRABAJO/TRABAJO_IPC/src/controlador/InicioController.java</file>
         </group>
     </open-files>
 </project-private>

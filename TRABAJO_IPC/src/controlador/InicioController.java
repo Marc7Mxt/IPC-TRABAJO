@@ -46,8 +46,10 @@ public class InicioController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        /*
         try {
+            Club.getInstance().setInitialData();
+            /*
+            try {
             Club club = Club.getInstance();
             
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/vistas/misreservas.fxml"));
@@ -56,17 +58,22 @@ public class InicioController implements Initializable {
             misreservas.inicializaModelo("user1");
             System.out.println(club.getBookings());
             
-        } catch (ClubDAOException | IOException ex) {
+            } catch (ClubDAOException | IOException ex) {
+            Logger.getLogger(InicioController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            */
+        } catch (ClubDAOException ex) {
+            Logger.getLogger(InicioController.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
             Logger.getLogger(InicioController.class.getName()).log(Level.SEVERE, null, ex);
         }
-        */
     }    
 
         
     
     @FXML
     private void IraPistas(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/vistas/pistas.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/vistas/pistasprueba.fxml"));
         Parent root = loader.load();
         
         JavaFXMLApplication.setRoot(root);
@@ -74,18 +81,71 @@ public class InicioController implements Initializable {
 
     @FXML
     private void IraMisreservas(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/vistas/misreservas.fxml"));
-        Parent root = loader.load();
-        
-        JavaFXMLApplication.setRoot(root);
+        if(ControladorPrincipal.isLogged()){
+            verVentanaMisReservas();
+        } else {
+            verVentanaLogin();
+        }
     }
 
 
     @FXML
     private void IraUsuario(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/vistas/ventanaDatos.fxml"));
-        Parent root = loader.load();
-        
-        JavaFXMLApplication.setRoot(root);
+        if(ControladorPrincipal.isLogged()){
+            verVentanaUsuario();
+        } else {
+            verVentanaLogin();
+        }
+    }
+    
+    private void verVentanaUsuario() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/vistas/ventanaDatos.fxml"));
+            Parent userRoot = loader.load();
+            Stage userStage = new Stage();
+            userStage.setScene(new Scene(userRoot));
+            userStage.show();
+
+            // Opcionalmente, puedes cerrar la ventana actual si es necesario
+            Stage currentStage = (Stage) buttonUsuario.getScene().getWindow();
+            currentStage.close();
+        } catch (IOException e) {
+            // Manejo de errores al cargar la ventana de usuario
+            
+        }
+    }
+
+    private void verVentanaLogin() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/vistas/login.fxml"));
+            Parent loginRoot = loader.load();
+            Stage loginStage = new Stage();
+            loginStage.setScene(new Scene(loginRoot));
+            loginStage.show();
+
+            // Opcionalmente, puedes cerrar la ventana actual si es necesario
+            Stage currentStage = (Stage) buttonUsuario.getScene().getWindow();
+            currentStage.close();
+        } catch (IOException e) {
+            // Manejo de errores al cargar la ventana de inicio de sesión
+            
+        }
+    }
+    private void verVentanaMisReservas(){
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/vistas/login.fxml"));
+            Parent loginRoot = loader.load();
+            Stage loginStage = new Stage();
+            loginStage.setScene(new Scene(loginRoot));
+            loginStage.show();
+
+            // Opcionalmente, puedes cerrar la ventana actual si es necesario
+            Stage currentStage = (Stage) buttonUsuario.getScene().getWindow();
+            currentStage.close();
+        } catch (IOException e) {
+            
+        }
     }
 }
+
+

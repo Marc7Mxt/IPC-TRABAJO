@@ -31,7 +31,7 @@
                   <Font size="14.0" />
                </font>
             </Text>
-            <Hyperlink layoutX="309.0" layoutY="193.0" text="Regístrate" textFill="#ffa100">
+            <Hyperlink fx:id="hipervinculoRegistro" layoutX="309.0" layoutY="193.0" onAction="#registrarClicked" text="Regístrate" textFill="#ffa100">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font>
