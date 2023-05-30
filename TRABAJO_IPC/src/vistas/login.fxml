@@ -15,11 +15,6 @@
    <children>
       <AnchorPane prefHeight="395.3333333333333" prefWidth="472.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <ImageView fitHeight="395.0" fitWidth="472.0" pickOnBounds="true">
-               <image>
-                  <Image url="@../fotostrabajo/fondotodas.jpeg" />
-               </image>
-            </ImageView>
             <TextField fx:id="textfieldNicknameLogin" layoutX="177.0" layoutY="238.0" prefHeight="25.0" prefWidth="216.0" />
             <Label alignment="CENTER" layoutX="147.0" layoutY="14.0" prefHeight="38.0" prefWidth="177.0" text="Inicio de sesión">
                <font>
