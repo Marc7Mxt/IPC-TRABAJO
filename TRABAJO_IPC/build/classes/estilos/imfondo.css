@@ -17,6 +17,12 @@
     -fx-stroke: black;
 }
 
+#misreservas{
+    -fx-font-color: orange;
+    -fx-stroke-width: 1px;
+    -fx-stroke: black;
+}
+
 .fondo{
     -fx-background-image: url("/fotostrabajo/fondotodas.jpg");
     -fx-background-repeat: no-repeat;
