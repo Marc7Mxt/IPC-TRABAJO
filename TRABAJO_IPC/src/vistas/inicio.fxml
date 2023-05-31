@@ -9,26 +9,26 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="body" stylesheets="@../estilos/imfondo.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.InicioController">
+<BorderPane maxWidth="-Infinity" minHeight="-Infinity" styleClass="body" stylesheets="@../estilos/imfondo.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.InicioController">
    <bottom>
-      <HBox prefHeight="50.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+      <HBox alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="50.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <Button mnemonicParsing="false" pickOnBounds="false" prefHeight="50.0" prefWidth="150.0" style="-fx-background-color: #ffac1a;" text="INICIO" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+            <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" pickOnBounds="false" prefHeight="50.0" prefWidth="150.0" style="-fx-background-color: #ffac1a;" text="INICIO" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </Button>
-            <Button fx:id="botonPistas" mnemonicParsing="false" onAction="#IraPistas" prefHeight="50.0" prefWidth="150.0" style="-fx-border-color: #ffac1a; -fx-border-width: 2; -fx-background-color: #ffffff;" text="VER PISTAS" textAlignment="CENTER" textFill="#ffac1a">
+            <Button fx:id="botonPistas" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#IraPistas" prefHeight="50.0" prefWidth="150.0" style="-fx-border-color: #ffac1a; -fx-border-width: 2; -fx-background-color: #ffffff;" text="VER PISTAS" textAlignment="CENTER" textFill="#ffac1a">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </Button>
-            <Button fx:id="botonMisReservas" mnemonicParsing="false" onAction="#IraMisreservas" prefHeight="50.0" prefWidth="150.0" style="-fx-border-color: #ffac1a; -fx-border-width: 2; -fx-background-color: #ffffff;" text="MIS RESERVAS" textAlignment="CENTER" textFill="#ffac1a">
+            <Button fx:id="botonMisReservas" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#IraMisreservas" prefHeight="50.0" prefWidth="150.0" style="-fx-border-color: #ffac1a; -fx-border-width: 2; -fx-background-color: #ffffff;" text="MIS RESERVAS" textAlignment="CENTER" textFill="#ffac1a">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </Button>
-            <Button fx:id="botonUsuario" mnemonicParsing="false" onAction="#IraUsuario" prefHeight="50.0" prefWidth="150.0" style="-fx-border-color: #ffac1a; -fx-border-width: 2; -fx-background-color: #ffffff;" text="USUARIO" textAlignment="CENTER" textFill="#ffac1a">
+            <Button fx:id="botonUsuario" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#IraUsuario" prefHeight="50.0" prefWidth="150.0" style="-fx-border-color: #ffac1a; -fx-border-width: 2; -fx-background-color: #ffffff;" text="USUARIO" textAlignment="CENTER" textFill="#ffac1a">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
@@ -39,27 +39,35 @@
    <center>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <Text fx:id="lema" fill="#ffc916" layoutX="102.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="lema" text="¡Prepárate para jugar! Reserva tu pista y disfruta del juego" textAlignment="CENTER" wrappingWidth="395.3164463043213">
-               <font>
-                  <Font name="System Bold" size="36.0" />
-               </font>
-            </Text>
+            <HBox alignment="CENTER" prefHeight="200.66666666666666" prefWidth="600.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <Text fx:id="lema" fill="#ffc916" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="lema" text="¡Prepárate para jugar! Reserva tu pista y disfruta del juego" textAlignment="CENTER" wrappingWidth="395.3164463043213">
+                     <font>
+                        <Font name="System Bold" size="36.0" />
+                     </font>
+                  </Text>
+               </children>
+            </HBox>
          </children>
       </AnchorPane>
    </center>
    <top>
       <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="137.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
-            <Text fx:id="titulo" boundsType="LOGICAL_VERTICAL_CENTER" fill="WHITE" layoutX="257.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="titulo" text="GREENBALL CLUB DE TENIS" textAlignment="CENTER" wrappingWidth="276.53524017333984">
-               <font>
-                  <Font name="System Bold" size="38.0" />
-               </font>
-            </Text>
-            <ImageView fitHeight="113.0" fitWidth="117.0" layoutX="88.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../fotostrabajo/logo-sinfondo.png" />
-               </image>
-            </ImageView>
+            <HBox alignment="CENTER" prefHeight="137.33333333333334" prefWidth="600.0" spacing="75.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <ImageView fitHeight="113.0" fitWidth="117.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../fotostrabajo/logo-sinfondo.png" />
+                     </image>
+                  </ImageView>
+                  <Text fx:id="titulo" boundsType="LOGICAL_VERTICAL_CENTER" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="titulo" text="GREENBALL CLUB DE TENIS" textAlignment="CENTER" wrappingWidth="276.53524017333984">
+                     <font>
+                        <Font name="System Bold" size="38.0" />
+                     </font>
+                  </Text>
+               </children>
+            </HBox>
          </children>
       </AnchorPane>
    </top>
