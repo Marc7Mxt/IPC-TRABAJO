@@ -185,7 +185,7 @@ private void setTimeSlotsGrid(LocalDate selectedDate) {
     gridPane.getChildren().removeAll(etiquetasEliminar);
     }
     
-    private void reservarPista(MouseEvent event){
+private void reservarPista(MouseEvent event){
         Label celda = (Label) event.getSource();
         int columnIndex = GridPane.getColumnIndex(celda);
         int rowIndex = GridPane.getRowIndex(celda);
@@ -200,39 +200,47 @@ private void setTimeSlotsGrid(LocalDate selectedDate) {
                 Alert reservar = new Alert(AlertType.CONFIRMATION);
                 reservar.setTitle("Anular Reserva");
                 reservar.setHeaderText(null);
-                reservar.setContentText("Quieres reservar a la hora seleccionada?");
+                reservar.setContentText("¿Quieres reservar el día " + datePickerPistas.getValue().toString() + " a las " + hora.toString()+ " en la pista " + court.getName() + "?");
                 Optional<ButtonType> result = reservar.showAndWait();
-                
-                //anular.setContentText("¿Quieres reservar el día " + datePickerPistas.getValue().toString() + " a las " + hora.toString()+ "en la pista " + court.getName().toString() "?");
-                Member member = user;
-                boolean paid = true; // Ajusta el valor de acuerdo con la lógica de tu aplicación
-                LocalDateTime bookingDate = LocalDateTime.now();
-                LocalDate madeForDay = datePickerPistas.getValue();
+                if(result.isPresent() && result.get() == ButtonType.OK){
+                    Member member = user;
+                    boolean paid = true; // Ajusta el valor de acuerdo con la lógica de tu aplicación
+                    LocalDateTime bookingDate = LocalDateTime.now();
+                    LocalDate madeForDay = datePickerPistas.getValue();
 
-                try {
-                    club.registerBooking(bookingDate, madeForDay, hora, paid, court, member);
-                } catch (ClubDAOException ex) {
-                    Logger.getLogger(PistasPrueba2Controller.class.getName()).log(Level.SEVERE, null, ex);
+                    try {
+                        club.registerBooking(bookingDate, madeForDay, hora, paid, court, member);
+                    } catch (ClubDAOException ex) {
+                        Logger.getLogger(PistasPrueba2Controller.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+
+                    celda.setText(user.getNickName());
+                    celda.setId("reservado");
+                    celda.getStyleClass().add("/estilos/estiloPrincipal.css");
                 }
-
-                celda.setText(user.getNickName());
-                celda.setId("reservado");
-                celda.getStyleClass().add("/estilos/estiloPrincipal.css");
+                //anular.setContentText("¿Quieres reservar el día " + datePickerPistas.getValue().toString() + " a las " + hora.toString()+ "en la pista " + court.getName().toString() "?");
+                
             } else {
-                // La pista y la hora no están disponibles
-                // Aquí puedes mostrar un mensaje de error o realizar alguna otra acción
+                Alert fallida = new Alert(AlertType.INFORMATION);
+                fallida.setTitle("Reserva Fallida");
+                fallida.setHeaderText(null);
+                fallida.setContentText("No se pudo reservar porque existe otra reserva en esta hora");
+                fallida.showAndWait();
             }
         }
     }
 
     private boolean isPistaDisponible(Court court, LocalTime hora) {
-        // Verifica si la pista y la hora están disponibles en la lista de reservas
-        for (Booking booking : dayBookings) {
-            if (booking.getCourt() == court && hora.equals(booking.getFromTime().getHour())) {
-                return false; // La pista y la hora no están disponibles
-            }
+    // Verifica si la pista y la hora están disponibles en la lista de reservas
+    for (Booking booking : dayBookings) {
+        LocalTime bookingHora = booking.getFromTime(); // Obtener la hora de la reserva
+
+        // Comparar solo las horas, sin tener en cuenta los minutos
+        if (booking.getCourt() == court && bookingHora.getHour() == hora.getHour()) {
+            return false; // La pista y la hora no están disponibles
         }
-        return true; // La pista y la hora están disponibles
+    }
+    return true; // La pista y la hora están disponibles 
     }
 
     @FXML
