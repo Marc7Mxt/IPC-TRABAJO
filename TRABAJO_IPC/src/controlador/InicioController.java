@@ -75,9 +75,16 @@ public class InicioController implements Initializable {
     @FXML
     private void IraPistas(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/vistas/pistasprueba.fxml"));
-        Parent root = loader.load();
-        
-        JavaFXMLApplication.setRoot(root);
+            Parent userRoot = loader.load();
+            //ventanaDatosController ventanaDatosController = loader.getController();
+            //ventanaDatosController.initMember(user);
+            Stage userStage = new Stage();
+            userStage.setScene(new Scene(userRoot));
+            userStage.show();
+
+            // Opcionalmente, puedes cerrar la ventana actual si es necesario
+            Stage currentStage = (Stage) botonPistas.getScene().getWindow();
+            currentStage.close();
     }
 
     @FXML
