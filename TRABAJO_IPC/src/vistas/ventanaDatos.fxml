@@ -106,7 +106,7 @@
                         <PasswordField fx:id="passfieldRegistro" promptText="Debe contener mínimo 6 carácteres" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                         <TextField fx:id="tarjetaRegistro" promptText="Escriba 16 dígitos" GridPane.columnIndex="1" GridPane.rowIndex="5" />
                         <TextField fx:id="svcRegistro" prefHeight="26.0" prefWidth="403.0" promptText="Escriba 3 dígitos" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-                        <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="7">
+                        <HBox alignment="TOP_RIGHT" prefHeight="100.0" prefWidth="329.0" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="7">
                            <children>
                               <Button fx:id="botonVolver" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#volverClicked" prefHeight="31.0" prefWidth="67.0" stylesheets="@../estilos/estiloLogin.css" text="Volver" textFill="#ffad1f" HBox.hgrow="ALWAYS">
                                  <HBox.margin>

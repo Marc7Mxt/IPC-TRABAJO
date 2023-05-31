@@ -67,6 +67,10 @@ public class MisReservasController implements Initializable {
     
     private Member user;
     
+    public void initMember(Member m) {
+        this.user = m;
+    }
+    
     //REVISAR DE NUEVO
     public  void inicializaModelo(String login) throws ClubDAOException, IOException{
         Club club = Club.getInstance();

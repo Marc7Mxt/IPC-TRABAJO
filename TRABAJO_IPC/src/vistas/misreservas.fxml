@@ -7,12 +7,14 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
+
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="body" stylesheets="@../estilos/imfondo.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.MisReservasController">
    <bottom>
-      <HBox prefHeight="50.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+      <HBox alignment="CENTER" prefHeight="50.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
             <Button mnemonicParsing="false" onAction="#IraInicio" prefHeight="50.0" prefWidth="150.0" style="-fx-background-color: #ffffff; -fx-border-color: #ffac1a; -fx-border-width: 2;" text="INICIO" textAlignment="CENTER" textFill="#ffac1a">
                <font>
@@ -56,31 +58,45 @@
       </HBox>
    </bottom>
    <center>
-      <AnchorPane prefHeight="250.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+      <HBox alignment="CENTER" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="buttonAnular" layoutX="534.0" layoutY="-15.0" mnemonicParsing="false" onAction="#anularHandle" text="Eliminar" />
-            <TableView fx:id="TableView" layoutX="14.0" layoutY="-15.0" prefHeight="266.0" prefWidth="511.0" scaleShape="false">
-              <columns>
-                  <TableColumn fx:id="diaColumn" prefWidth="75.0" text="Día" />
-                <TableColumn fx:id="pistaColumn" prefWidth="75.0" text="Pista" />
-                <TableColumn fx:id="inicioColumn" prefWidth="75.0" text="Hora Inicio" />
-                  <TableColumn fx:id="salidaColumn" prefWidth="75.0" text="Hora Salida" />
-                  <TableColumn fx:id="pagoColumn" prefWidth="75.0" text="Pagada" />
-              </columns>
-               <columnResizePolicy>
-                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-               </columnResizePolicy>
-            </TableView>
-         </children></AnchorPane>
+            <VBox alignment="CENTER">
+               <children>
+                  <AnchorPane prefHeight="250.0" prefWidth="600.0">
+                     <children>
+                        <Button fx:id="buttonAnular" layoutX="533.0" layoutY="-23.0" mnemonicParsing="false" onAction="#anularHandle" text="Eliminar" />
+                        <TableView fx:id="TableView" layoutX="14.0" layoutY="-23.0" prefHeight="287.0" prefWidth="511.0" scaleShape="false">
+                          <columns>
+                              <TableColumn fx:id="diaColumn" prefWidth="75.0" text="Día" />
+                            <TableColumn fx:id="pistaColumn" prefWidth="75.0" text="Pista" />
+                            <TableColumn fx:id="inicioColumn" prefWidth="75.0" text="Hora Inicio" />
+                              <TableColumn fx:id="salidaColumn" prefWidth="75.0" text="Hora Salida" />
+                              <TableColumn fx:id="pagoColumn" prefWidth="75.0" text="Pagada" />
+                          </columns>
+                           <columnResizePolicy>
+                              <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                           </columnResizePolicy>
+                        </TableView>
+                     </children>
+                  </AnchorPane>
+               </children>
+            </VBox>
+         </children>
+      </HBox>
    </center>
    <top>
-      <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="72.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+      <HBox alignment="CENTER" BorderPane.alignment="CENTER">
          <children>
-            <Text fill="#ffc916" layoutX="224.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-stroke-width: 1px; -fx-stroke: black;" text="Mis Reservas" textAlignment="CENTER">
-               <font>
-                  <Font name="System Bold" size="25.0" />
-               </font>
-            </Text>
-         </children></AnchorPane>
+            <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="72.0" prefWidth="600.0">
+               <children>
+                  <Text fill="#ffc916" layoutX="224.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-stroke-width: 0.5px; -fx-stroke: black;" text="Mis Reservas" textAlignment="CENTER">
+                     <font>
+                        <Font name="System Bold" size="25.0" />
+                     </font>
+                  </Text>
+               </children>
+            </AnchorPane>
+         </children>
+      </HBox>
    </top>
 </BorderPane>

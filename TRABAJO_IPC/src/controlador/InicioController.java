@@ -145,8 +145,8 @@ public class InicioController implements Initializable {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/vistas/misreservas.fxml"));
             Parent loginRoot = loader.load();
-            ventanaDatosController ventanaDatosController = loader.getController();
-            ventanaDatosController.initMember(user);
+            MisReservasController misReservas = loader.getController();
+            misReservas.initMember(user);
             Stage loginStage = new Stage();
             loginStage.setScene(new Scene(loginRoot));
             loginStage.show();
