@@ -81,7 +81,7 @@ public class InicioController implements Initializable {
     }
 
     @FXML
-    private void IraMisreservas(ActionEvent event) throws IOException {
+    private void IraMisreservas(ActionEvent event) throws IOException, ClubDAOException {
         if(ControladorPrincipal.isLogged()){
             verVentanaMisReservas();
         } else {
@@ -134,10 +134,12 @@ public class InicioController implements Initializable {
             
         }
     }
-    private void verVentanaMisReservas(){
+    private void verVentanaMisReservas() throws ClubDAOException{
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/vistas/misreservas.fxml"));
             Parent loginRoot = loader.load();
+            ventanaDatosController ventanaDatosController = loader.getController();
+            ventanaDatosController.initMember(user);
             Stage loginStage = new Stage();
             loginStage.setScene(new Scene(loginRoot));
             loginStage.show();

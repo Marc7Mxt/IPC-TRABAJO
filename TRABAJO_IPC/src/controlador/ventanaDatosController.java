@@ -22,6 +22,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.control.TextFormatter;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.ImagePattern;
@@ -73,19 +74,14 @@ public class ventanaDatosController implements Initializable {
         passfieldRegistro.setText(user.getPassword());
         passfieldRepRegistro.setText(user.getPassword());
         textfieldTlfRegistro.setText(user.getTelephone());
-        if(user.getCreditCard() != null){
-            svcRegistro.setText(user.getCreditCard());
-        }
-        if(user.getSvc() != 0){
+        if(user.getCreditCard() != null && user.getSvc() != 0){
+            tarjetaRegistro.setText(user.getCreditCard());
             svcRegistro.setText(Integer.toString(user.getSvc()));
         }
         imagenUsuario.setImage(user.getImage());
         //Circle circle = new Circle();
         //circle.setRadius(50);
         //imagenUsuario.setClip(circle);
-        
-        //Image imglogo = new Image(getClass().getResourceAsStream("/resources/logo2.PNG"));
-        // logo.setFill(new ImagePattern(imglogo));
     }
 
     /**
@@ -94,6 +90,40 @@ public class ventanaDatosController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        TextFormatter<String> numTlf = new TextFormatter<>(c -> {
+            String newText = c.getControlNewText();
+            if (newText.matches("\\d*")) {
+                return c;
+            }
+            return null;
+        });
+        
+        TextFormatter<String> maxNumCredit = new TextFormatter<>(c -> {
+            String entradaTeclado = c.getControlNewText();
+            if (!entradaTeclado.matches("\\d*")) {
+                return null;
+            }
+            if (entradaTeclado.length() > 16){
+                return null;
+            }
+            
+            return c;
+        });
+        
+        TextFormatter<String> maxNumSVC = new TextFormatter<>(c -> {
+            String entradaTeclado = c.getControlNewText();
+            if (!entradaTeclado.matches("\\d*")) {
+                return null;
+            }
+            if (entradaTeclado.length() > 3){
+                return null;
+            }
+            return c;
+        });
+
+        textfieldTlfRegistro.setTextFormatter(numTlf);
+        tarjetaRegistro.setTextFormatter(maxNumCredit);
+        svcRegistro.setTextFormatter(maxNumSVC);
 
     }    
 
@@ -107,6 +137,8 @@ public class ventanaDatosController implements Initializable {
             if(!svcRegistro.getText().isEmpty()){
                 int svc = Integer.parseInt(svcRegistro.getText());
                 user.setSvc(svc);
+            } else {
+               
             }
             // cambiar datos
             user.setName(textfieldNombreRegistro.getText());
@@ -135,7 +167,6 @@ public class ventanaDatosController implements Initializable {
     private void volverClicked(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/vistas/inicio.fxml"));
         Parent root = loader.load();
-        
         JavaFXMLApplication.setRoot(root);
     }
     
@@ -176,9 +207,4 @@ public class ventanaDatosController implements Initializable {
         Matcher m1 = p1.matcher(s1);
         return (t.getText().isEmpty()&& t1.getText().isEmpty()) || (validarDatos(t) && validarDatos(t1) && m.matches() && m1.matches());
     }
-    
-   // public void initData(Member m) {
-     //   this.user = m;
-   // }
-    
 }
