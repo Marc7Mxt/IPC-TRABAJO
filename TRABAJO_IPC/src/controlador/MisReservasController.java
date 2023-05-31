@@ -51,7 +51,7 @@ public class MisReservasController implements Initializable {
     private ObservableList<Booking> datos = null;
     
     @FXML
-    private Button buttonAnular;
+    private Button botonAnular;
     @FXML
     private TableView<Booking> TableView;
     @FXML
@@ -75,13 +75,16 @@ public class MisReservasController implements Initializable {
     @FXML
     private Button botonPistas;
     
-    public void initMember(Member m) {
+    private Club club;
+    
+    public void initMember(Member m) throws ClubDAOException, IOException {
         this.user = m;
+        inicializaModelo(user.getNickName());
+        
     }
     
     //REVISAR DE NUEVO
     public  void inicializaModelo(String login) throws ClubDAOException, IOException{
-        Club club = Club.getInstance();
         diaColumn.setCellValueFactory((diaFila ->new SimpleStringProperty(diaFila.getValue().getMadeForDay().toString())));
         pistaColumn.setCellValueFactory(pistaFila -> {
             ArrayList<Court> pistas = new ArrayList<Court>(club.getCourts());
@@ -120,13 +123,14 @@ public class MisReservasController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         try {
-            inicializaModelo("Marc7Mxt");
+            club = Club.getInstance();
+            
         } catch (ClubDAOException ex) {
             Logger.getLogger(MisReservasController.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
             Logger.getLogger(MisReservasController.class.getName()).log(Level.SEVERE, null, ex);
         }
-        buttonAnular.disableProperty().bind(Bindings.equal(-1,TableView.getSelectionModel().selectedIndexProperty()));
+        botonAnular.disableProperty().bind(Bindings.equal(-1,TableView.getSelectionModel().selectedIndexProperty()));
     }  
     
     @FXML

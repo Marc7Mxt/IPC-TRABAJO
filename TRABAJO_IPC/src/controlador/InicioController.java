@@ -73,18 +73,18 @@ public class InicioController implements Initializable {
         
     
     @FXML
-    private void IraPistas(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/vistas/pistasprueba.fxml"));
-            Parent userRoot = loader.load();
-            //ventanaDatosController ventanaDatosController = loader.getController();
-            //ventanaDatosController.initMember(user);
-            Stage userStage = new Stage();
-            userStage.setScene(new Scene(userRoot));
-            userStage.show();
-
-            // Opcionalmente, puedes cerrar la ventana actual si es necesario
-            Stage currentStage = (Stage) botonPistas.getScene().getWindow();
-            currentStage.close();
+    private void IraPistas(ActionEvent event) throws IOException, ClubDAOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/vistas/pistasprueba2.fxml"));
+        Parent pistasRoot = loader.load();
+        PistasPrueba2Controller ventanaDatosController = loader.getController();
+        ventanaDatosController.initMember(user);
+        Stage pistasStage = new Stage();
+        pistasStage.setScene(new Scene(pistasRoot));
+        pistasStage.showAndWait();
+        // Opcionalmente, puedes cerrar la ventana actual si es necesario
+        Stage currentStage = (Stage) botonPistas.getScene().getWindow();
+        currentStage.close();
+        
     }
 
     @FXML
@@ -152,7 +152,7 @@ public class InicioController implements Initializable {
             loginStage.show();
 
             // Opcionalmente, puedes cerrar la ventana actual si es necesario
-            Stage currentStage = (Stage) botonUsuario.getScene().getWindow();
+            Stage currentStage = (Stage) botonMisReservas.getScene().getWindow();
             currentStage.close();
         } catch (IOException e) {
             
