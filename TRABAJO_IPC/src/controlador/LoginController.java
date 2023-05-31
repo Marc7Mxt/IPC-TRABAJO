@@ -97,7 +97,7 @@ public class LoginController implements Initializable {
             Parent root = miCargador.load();
             InicioController controlador = miCargador.getController();
             controlador.initMember(nickname, password);
-            Scene scene = new Scene(root, 600, 500);
+            Scene scene = new Scene(root, 600, 388.66666666666663);
             Stage stage2 = new Stage();
             stage2.setScene(scene);
             stage2.setTitle("CLUB DE TENIS GREENBALL");
