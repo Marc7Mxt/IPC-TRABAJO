@@ -7,6 +7,7 @@ package controlador;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -20,6 +21,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -65,6 +67,8 @@ public class ventanaDatosController implements Initializable {
     private ImageView imagenUsuario;
     @FXML
     private Label nickName;
+    @FXML
+    private Button botonLogOut;
     
     public void initMember(Member m) throws ClubDAOException, IOException{
         //Club c = Club.getInstance();
@@ -215,4 +219,26 @@ public class ventanaDatosController implements Initializable {
         Matcher m1 = p1.matcher(s1);
         return (t.getText().isEmpty()&& t1.getText().isEmpty()) || (validarDatos(t) && validarDatos(t1) && m.matches() && m1.matches());
     }
+
+    @FXML
+    private void cerrarSesiónClicked(ActionEvent event) throws IOException {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Confirmación");
+        alert.setHeaderText(null);
+        alert.setContentText("¿Estás seguro de que quieres cerrar sesión?");
+        Optional<ButtonType> result = alert.showAndWait();
+        if(result.get() == ButtonType.OK){
+            Stage stage = (Stage) botonLogOut.getScene().getWindow();
+            stage.close();
+            ControladorPrincipal.cambiarLoggedIn(false);
+            user = null;
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/vistas/inicio.fxml"));
+            Parent userRoot = loader.load();
+            Stage inicioStage = new Stage();
+            inicioStage.setScene(new Scene(userRoot));
+            inicioStage.show();
+            
+        }
+    }
+
 }

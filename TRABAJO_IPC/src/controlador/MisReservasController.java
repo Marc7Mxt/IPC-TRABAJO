@@ -26,6 +26,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
@@ -33,6 +34,7 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 import javafxmlapplication.JavaFXMLApplication;
 import model.Booking;
 import model.Club;
@@ -66,6 +68,12 @@ public class MisReservasController implements Initializable {
     private int maxFilas = 10;
     
     private Member user;
+    @FXML
+    private Button botonUsuario;
+    @FXML
+    private Button botonInicio;
+    @FXML
+    private Button botonPistas;
     
     public void initMember(Member m) {
         this.user = m;
@@ -108,20 +116,11 @@ public class MisReservasController implements Initializable {
             //Collections.reverse(ultimas10Reservas);
             datos = FXCollections.observableArrayList(ultimas10Reservas);// Asigna el modelo de datos a la TableView
             TableView.setItems(datos);
-        
-            //OPCIÓN 3
-        /*
-        ArrayList<Booking> reservas = new ArrayList<Booking>(club.getUserBookings(login));
-        reservas.sort(Comparator.comparing(Booking::getMadeForDay).reversed());
-        datos = FXCollections.observableArrayList(reservas);
-        datos.setAll(reservas.subList(0, Math.min(maxFilas, reservas.size())));
-        TableView.setItems(datos);
-        */
     }
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         try {
-            inicializaModelo("user5");
+            inicializaModelo("Marc7Mxt");
         } catch (ClubDAOException ex) {
             Logger.getLogger(MisReservasController.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
@@ -139,19 +138,23 @@ public class MisReservasController implements Initializable {
     }
 
     @FXML
-    private void IraInicio(ActionEvent event) throws IOException {
+    private void IraInicio(ActionEvent event) throws IOException, ClubDAOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/vistas/inicio.fxml"));
-        Parent root = loader.load();
-        
-        JavaFXMLApplication.setRoot(root);
+        Parent userRoot = loader.load();
+        InicioController inicioController = loader.getController();
+        inicioController.initMember(user.getNickName(), user.getPassword());
+        Stage userStage = new Stage();
+        userStage.setScene(new Scene(userRoot));
+        userStage.show();
+
+        // Opcionalmente, puedes cerrar la ventana actual si es necesario
+        Stage currentStage = (Stage) botonUsuario.getScene().getWindow();
+        currentStage.close();
     }
     
     @FXML
-    private void IraUsuario(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/vistas/ventanaDatos.fxml"));
-        Parent root = loader.load();
-        
-        JavaFXMLApplication.setRoot(root);
+    private void IraUsuario(ActionEvent event) throws IOException, ClubDAOException {
+        verVentanaUsuario();
     }
     
     @FXML
@@ -180,8 +183,23 @@ public class MisReservasController implements Initializable {
             }
         } 
     }
-    
-     //public void initData(Member m) {
-       // this.user = m;
-    // }
+    private void verVentanaUsuario() throws ClubDAOException {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/vistas/ventanaDatos.fxml"));
+            Parent userRoot = loader.load();
+            ventanaDatosController ventanaDatosController = loader.getController();
+            ventanaDatosController.initMember(user);
+            Stage userStage = new Stage();
+            userStage.setScene(new Scene(userRoot));
+            userStage.show();
+
+            // Opcionalmente, puedes cerrar la ventana actual si es necesario
+            Stage currentStage = (Stage) botonUsuario.getScene().getWindow();
+            currentStage.close();
+        } catch (IOException e) {
+            // Manejo de errores al cargar la ventana de usuario
+            
+        }
+    }
+ 
 }

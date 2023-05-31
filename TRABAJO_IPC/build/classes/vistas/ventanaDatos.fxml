@@ -20,7 +20,10 @@
          <children>
             <VBox alignment="CENTER" layoutY="1.0" prefHeight="421.0" prefWidth="616.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <ImageView fx:id="imagenUsuario" fitHeight="89.0" fitWidth="128.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="imagenUsuario" fitHeight="89.0" fitWidth="128.0" pickOnBounds="true" preserveRatio="true">
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin></ImageView>
                   <Label fx:id="nickName" alignment="CENTER" prefHeight="38.0" prefWidth="598.0" text="Nombre de usuario" textAlignment="CENTER">
                      <font>
                         <Font size="26.0" />
@@ -106,23 +109,6 @@
                         <PasswordField fx:id="passfieldRegistro" promptText="Debe contener mínimo 6 carácteres" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                         <TextField fx:id="tarjetaRegistro" promptText="Escriba 16 dígitos" GridPane.columnIndex="1" GridPane.rowIndex="5" />
                         <TextField fx:id="svcRegistro" prefHeight="26.0" prefWidth="403.0" promptText="Escriba 3 dígitos" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-                        <HBox alignment="TOP_RIGHT" prefHeight="100.0" prefWidth="329.0" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="7">
-                           <children>
-                              <Button fx:id="botonVolver" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#volverClicked" prefHeight="31.0" prefWidth="67.0" stylesheets="@../estilos/estiloLogin.css" text="Volver" textFill="#ffad1f" HBox.hgrow="ALWAYS">
-                                 <HBox.margin>
-                                    <Insets left="130.0" />
-                                 </HBox.margin>
-                              </Button>
-                              <Button fx:id="botonRegistrar" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#registrarClicked" prefHeight="30.0" prefWidth="113.0" style="-fx-background-color: #ffac1a;" text="Actualizar datos" textAlignment="RIGHT" textFill="WHITE" HBox.hgrow="ALWAYS">
-                                 <HBox.margin>
-                                    <Insets left="20.0" />
-                                 </HBox.margin>
-                              </Button>
-                           </children>
-                           <padding>
-                              <Insets top="5.0" />
-                           </padding>
-                        </HBox>
                         <Label prefHeight="27.0" prefWidth="211.0" text="Repetir Contraseña" GridPane.halignment="RIGHT" GridPane.rowIndex="4">
                            <font>
                               <Font size="18.0" />
@@ -132,6 +118,19 @@
                            </padding>
                         </Label>
                         <PasswordField fx:id="passfieldRepRegistro" promptText="Repita su contraseña escrita anteriormente, por favor" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                        <HBox alignment="TOP_RIGHT" prefHeight="100.0" prefWidth="329.0" spacing="60.0" GridPane.columnIndex="1" GridPane.rowIndex="7">
+                           <children>
+                              <Button fx:id="botonLogOut" mnemonicParsing="false" onAction="#cerrarSesiónClicked" prefHeight="32.0" prefWidth="93.0" style="-fx-background-color: #ffac1a;" text="Cerrar sesión" textAlignment="CENTER" textFill="WHITE" />
+                              <Button fx:id="botonRegistrar" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#registrarClicked" prefHeight="30.0" prefWidth="113.0" style="-fx-background-color: #ffac1a;" text="Actualizar datos" textAlignment="RIGHT" textFill="WHITE">
+                                 <HBox.margin>
+                                    <Insets />
+                                 </HBox.margin>
+                              </Button>
+                           </children>
+                           <padding>
+                              <Insets top="5.0" />
+                           </padding>
+                        </HBox>
                      </children>
                      <padding>
                         <Insets right="35.0" />
@@ -139,6 +138,7 @@
                   </GridPane>
                </children>
             </VBox>
+            <Button fx:id="botonVolver" alignment="CENTER" contentDisplay="CENTER" layoutX="47.0" layoutY="8.0" mnemonicParsing="false" onAction="#volverClicked" prefHeight="31.0" prefWidth="67.0" stylesheets="@../estilos/estiloLogin.css" text="Volver" textAlignment="CENTER" textFill="#ffad1f" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="30.0" />
          </children>
       </AnchorPane>
    </children>

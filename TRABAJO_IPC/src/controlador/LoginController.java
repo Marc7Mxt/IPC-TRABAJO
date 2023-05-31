@@ -74,12 +74,14 @@ public class LoginController implements Initializable {
             return;
         }
         // Verificar si el nickname existe en la base de datos
-        if (!club.existsLogin(nickname)) {
+        else if (!club.existsLogin(nickname)) {
             mostrarAlerta("No existe el nickname. Por favor regístrate");
             return;
         }
+        
+       
         // Verificar si las credenciales coinciden con la base de datos
-        if (user != null) {
+        else if (user != null) {
             // Obtener la referencia a la ventana actual
             Stage stage = (Stage) botonEntrar.getScene().getWindow();
 
@@ -107,7 +109,7 @@ public class LoginController implements Initializable {
             stage2 = (Stage) botonEntrar.getScene().getWindow();
             stage2.close(); 
 
-        }
+        } else { mostrarAlerta("Por favor proporciona los datos necesarios");}
     }
 
     private void mostrarAlerta(String mensaje) {
@@ -124,16 +126,11 @@ public class LoginController implements Initializable {
     private void volverClicked(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/vistas/inicio.fxml"));
         Parent userRoot = loader.load();
-        //ventanaDatosController ventanaDatosController = loader.getController();
-        //ventanaDatosController.initMember(user);
         Stage userStage = new Stage();
         userStage.setScene(new Scene(userRoot));
         userStage.show();
         Stage stage = (Stage) botonVolver.getScene().getWindow();
         stage.close();
-    
-        
-        
     }
 
     @FXML

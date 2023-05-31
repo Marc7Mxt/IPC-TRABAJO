@@ -11,7 +11,10 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
@@ -51,6 +54,8 @@ public class registroController implements Initializable {
     private Button botonRegistrar;
     @FXML
     private PasswordField passfieldRepRegistro;
+    @FXML
+    private Button botonVolver;
 
     /**
      * Initializes the controller class.
@@ -163,6 +168,17 @@ public class registroController implements Initializable {
                 alert.showAndWait();
             }         
         }
+    }
+
+    @FXML
+    private void volverClicked(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/vistas/login.fxml"));
+        Parent userRoot = loader.load();
+        Stage userStage = new Stage();
+        userStage.setScene(new Scene(userRoot));
+        userStage.show();
+        Stage stage = (Stage) botonVolver.getScene().getWindow();
+        stage.close();
     }
 
 class ImagenTabCell extends ComboBoxListCell<String> {
