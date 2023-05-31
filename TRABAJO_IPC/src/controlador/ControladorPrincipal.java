@@ -14,8 +14,8 @@ import model.Member;
  */
 public class ControladorPrincipal {
     
-    private StringProperty nicknameProperty = new SimpleStringProperty();
-    private StringProperty passwordProperty = new SimpleStringProperty();
+    //private StringProperty nicknameProperty = new SimpleStringProperty();
+    //private StringProperty passwordProperty = new SimpleStringProperty();
     
     private static Member user;
     
@@ -29,13 +29,13 @@ public class ControladorPrincipal {
         return loggedIn;
     }
     
-    public StringProperty getNicknameProperty() {
-        return nicknameProperty;
-    }
+    //public StringProperty getNicknameProperty() {
+    //    return nicknameProperty;
+    //}
     
-    public StringProperty getPasswordProperty() {
-        return passwordProperty;
-    }
+    //public StringProperty getPasswordProperty() {
+    //    return passwordProperty;
+    //}
     
     public static void setUsuario(Member m) {
         ControladorPrincipal.user = m;

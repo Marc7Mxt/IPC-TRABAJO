@@ -101,7 +101,7 @@ public class LoginController implements Initializable {
             Stage stage2 = new Stage();
             stage2.setScene(scene);
             stage2.setTitle("CLUB DE TENIS GREENBALL");
-            stage2.setResizable(false);
+            //stage2.setResizable(false);
             stage2.initModality(Modality.APPLICATION_MODAL);
             stage2.show();
             stage2 = (Stage) botonEntrar.getScene().getWindow();
@@ -122,17 +122,16 @@ public class LoginController implements Initializable {
 
     @FXML
     private void volverClicked(ActionEvent event) throws IOException {
-        /*FXMLLoader miCargador = new FXMLLoader(getClass().getResource("/vistas/inicio.fxml"));
-        Parent root = miCargador.load();
-        Scene scene = new Scene(root, 600, 500);
-        Stage stage = new Stage();
-        stage.setScene(scene);
-        stage.setTitle("CLUB DE TENIS GREENBALL");
-        stage.setResizable(false);
-        stage.initModality(Modality.APPLICATION_MODAL);
-        stage.show(); */
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/vistas/inicio.fxml"));
+        Parent userRoot = loader.load();
+        //ventanaDatosController ventanaDatosController = loader.getController();
+        //ventanaDatosController.initMember(user);
+        Stage userStage = new Stage();
+        userStage.setScene(new Scene(userRoot));
+        userStage.show();
         Stage stage = (Stage) botonVolver.getScene().getWindow();
         stage.close();
+    
         
         
     }

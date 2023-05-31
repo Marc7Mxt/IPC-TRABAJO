@@ -17,6 +17,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -27,6 +28,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
+import javafx.stage.Stage;
 import javafxmlapplication.JavaFXMLApplication;
 import model.Club;
 import model.ClubDAOException;
@@ -138,7 +140,7 @@ public class ventanaDatosController implements Initializable {
                 int svc = Integer.parseInt(svcRegistro.getText());
                 user.setSvc(svc);
             } else {
-               
+               user.setSvc(000);
             }
             // cambiar datos
             user.setName(textfieldNombreRegistro.getText());
@@ -164,10 +166,16 @@ public class ventanaDatosController implements Initializable {
     }
 
     @FXML
-    private void volverClicked(ActionEvent event) throws IOException {
+    private void volverClicked(ActionEvent event) throws IOException, ClubDAOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/vistas/inicio.fxml"));
-        Parent root = loader.load();
-        JavaFXMLApplication.setRoot(root);
+        Parent userRoot = loader.load();
+        InicioController inicioController = loader.getController();
+        inicioController.initMember(nickName.getText(), passfieldRegistro.getText());
+        Stage stage = (Stage) botonVolver.getScene().getWindow();
+        stage.close();
+        Stage userStage = new Stage();
+        userStage.setScene(new Scene(userRoot));
+        userStage.show();
     }
     
     private boolean validarDatos(TextField t){
