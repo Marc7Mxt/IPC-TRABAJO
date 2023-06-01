@@ -105,19 +105,17 @@ public class MisReservasController implements Initializable {
                 else{return new SimpleStringProperty("No");}
         });
             //OPCIÓN 1
-            ArrayList<Booking> reservas = new ArrayList<>(club.getUserBookings(login)); // Lista de reservas
+            ArrayList<Booking> reservas = new ArrayList<>(club.getUserBookings(login)); 
             reservas.removeIf(booking -> {
                LocalDate hoy = LocalDate.now();
                LocalTime ahora = LocalTime.now();
                return booking.getMadeForDay().isBefore(hoy) || (booking.getMadeForDay().isEqual(hoy) && booking.getFromTime().isBefore(ahora));
             });
-            //reservas.removeIf(booking -> booking.getMadeForDay().isBefore(LocalDate.now())); //Quita aquellas anteriores al día actual
+            //reservas.removeIf(booking -> booking.getMadeForDay().isBefore(LocalDate.now())); 
             Comparator<Booking> reservasComparador = Comparator.comparing(Booking::getMadeForDay).thenComparing(Booking::getFromTime);
-            reservas.sort(reservasComparador); //Ordena la lista de reservas según su día y hora
+            reservas.sort(reservasComparador); 
             ArrayList<Booking> ultimas10Reservas = new ArrayList<>(reservas.subList(0, Math.min(10, reservas.size()))); //10 últimas reservas
 
-            // Invierte el orden de las reservas para que la más reciente esté en la parte superior
-            //Collections.reverse(ultimas10Reservas);
             datos = FXCollections.observableArrayList(ultimas10Reservas);// Asigna el modelo de datos a la TableView
             TableView.setItems(datos);
     }
@@ -145,7 +143,6 @@ public class MisReservasController implements Initializable {
         pistasStage.setTitle("DISPONIBILIDAD DE PISTAS");
         pistasStage.setScene(new Scene(pistasRoot));
         pistasStage.showAndWait();
-        // Opcionalmente, puedes cerrar la ventana actual si es necesario
         Stage currentStage = (Stage) botonPistas.getScene().getWindow();
         currentStage.close();
     }
@@ -161,7 +158,6 @@ public class MisReservasController implements Initializable {
         inicioStage.setTitle("CLUB DE TENIS GREENBALL");
         inicioStage.setScene(new Scene(userRoot));
         inicioStage.show();
-        // Opcionalmente, puedes cerrar la ventana actual si es necesario
         Stage currentStage = (Stage) botonInicio.getScene().getWindow();
         currentStage.close();
     }
@@ -208,7 +204,6 @@ public class MisReservasController implements Initializable {
             userStage.setTitle("USUARIO");
             userStage.setScene(new Scene(userRoot));
             userStage.show();
-            // Opcionalmente, puedes cerrar la ventana actual si es necesario
             Stage currentStage = (Stage) botonUsuario.getScene().getWindow();
             currentStage.close();
         } catch (IOException e) {

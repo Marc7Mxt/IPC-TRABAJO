@@ -138,21 +138,17 @@ public class ventanaDatosController implements Initializable {
         if(validarDatos(textfieldNombreRegistro) && validarDatos(textfieldApellidosRegistro) && validarTlf(textfieldTlfRegistro)
                 && validarPassword(passfieldRegistro, passfieldRepRegistro)
                 && validarCredit(tarjetaRegistro, svcRegistro)){
-            
-            // si han completado el campo svc cambiarlo a INTEGER y cambiarlo
             if(!svcRegistro.getText().isEmpty()){
                 int svc = Integer.parseInt(svcRegistro.getText());
                 user.setSvc(svc);
             } else {
                user.setSvc(000);
             }
-            // cambiar datos
             user.setName(textfieldNombreRegistro.getText());
             user.setSurname(textfieldApellidosRegistro.getText());
             user.setPassword(passfieldRegistro.getText());
             user.setTelephone(textfieldTlfRegistro.getText());
             user.setCreditCard(tarjetaRegistro.getText());
-            // Alerta : DATOS CAMBIADOS
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setHeaderText(null);
             alert.setTitle("Informacion");
@@ -189,7 +185,6 @@ public class ventanaDatosController implements Initializable {
         return (!s.isEmpty()) && (s.trim().length() != 0);
     }
     
-    // metodo para saber si el TextField de la CONTRASEÑA es valido
     private boolean validarPassword(TextField t, TextField t1){
         String s = t.getText();
         String r = "^(?=.*[0-9])"
@@ -202,7 +197,6 @@ public class ventanaDatosController implements Initializable {
         return validarDatos(t) && m.matches() && s.equals(t1.getText());
     }
     
-    // metodo para saber si el TextField del TELEFONO es valido
     private boolean validarTlf(TextField t){
         String s = t.getText();
         Pattern p = Pattern.compile("^\\d{9}$");
@@ -210,9 +204,7 @@ public class ventanaDatosController implements Initializable {
         return validarDatos(t) && m.matches();
     }
     
-    // metodo para saber si el TextField de la TARJETA y el SVC es valido
     private boolean validarCredit(TextField t, TextField t1){
-        // String cleanCreditCard = t.replaceAll("\\s|-", "");
         String s = t.getText();
         Pattern p = Pattern.compile("^\\d{16}$");
         Matcher m = p.matcher(s);

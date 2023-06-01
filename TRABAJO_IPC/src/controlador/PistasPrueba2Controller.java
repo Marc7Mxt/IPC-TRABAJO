@@ -23,6 +23,7 @@ import model.Member;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
 import javafx.collections.ObservableList;
@@ -98,7 +99,7 @@ public void initialize(URL url, ResourceBundle rb) {
 
     try {
         club = Club.getInstance();
-        user = club.getMemberByCredentials("Coryy", "123456Xx");
+        user = club.getMemberByCredentials(user.getNickName(),user.getPassword());
     } catch (ClubDAOException | IOException ex) {
         Logger.getLogger(InicioController.class.getName()).log(Level.SEVERE, null, ex);
     }
@@ -111,29 +112,14 @@ public void initialize(URL url, ResourceBundle rb) {
 
 private void setTimeSlotsGrid(LocalDate selectedDate) {
     limpiarCeldas();
-    // Aquí puedes actualizar la rejilla de intervalos de tiempo según la fecha seleccionada
-    // Puedes utilizar la variable selectedDate para obtener el día seleccionado
-    // y realizar las operaciones necesarias para mostrar los intervalos de tiempo correspondientes en la rejilla
-
-    // Obtener todas las reservas del día seleccionado
     dayBookings = new ArrayList<>(club.getForDayBookings(selectedDate));
-
-    // Configurar las columnas del GridPane
-    // En este ejemplo, agregaremos las horas en la primera columna y las pistas en las siguientes columnas
-    ArrayList<LocalTime> horas = generarHorasDisponibles(); // Generar lista de horas disponibles
+    ArrayList<LocalTime> horas = generarHorasDisponibles();
     int numPistas = courts.size();
-
-    // Agregar las pistas en las siguientes columnas
     for (int i = 0; i < numPistas; i++) {
         Court court = courts.get(i);
-        //Label labelPista = new Label("Pista " + (i + 1));
-        //gridPane.add(labelPista, i + 1, 0);
-
-        // Agregar las celdas para cada hora y pista
         for (int j = 0; j < horas.size(); j++) {
             Label labelCelda = new Label();
             String usuario = "";
-            // Verificar si hay una reserva para esta pista y hora
             boolean reservaEncontrada = false;
             for (Booking booking : dayBookings) {
                 if (booking.getCourt() == court && booking.getFromTime().equals(horas.get(j))) {
@@ -154,8 +140,6 @@ private void setTimeSlotsGrid(LocalDate selectedDate) {
             }
 
             gridPane.add(labelCelda, i + 1, j + 1);
-
-            // Agregar el manejador de eventos para reservar la pista al hacer clic en la celda
             final int pistaIndex = i;
             final int horaIndex = j;
             labelCelda.setOnMouseClicked(this::reservarPista);
@@ -164,7 +148,6 @@ private void setTimeSlotsGrid(LocalDate selectedDate) {
 } 
     
     private ArrayList<LocalTime> generarHorasDisponibles() {
-        // Generar lista de horas disponibles (por ejemplo, de 9:00 a 21:00 con intervalo de 1 hora)
         ArrayList<LocalTime> horas = new ArrayList<>();
         LocalTime horaInicio = LocalTime.of(9, 0);
         LocalTime horaFin = LocalTime.of(21, 0);
@@ -180,44 +163,50 @@ private void setTimeSlotsGrid(LocalDate selectedDate) {
     private void limpiarCeldas() {
     ObservableList<Node> children = gridPane.getChildren();
     ArrayList<Node> etiquetasEliminar = new ArrayList<>();
-
-    // Recorrer todas las celdas del GridPane
     for (Node node : children) {
         if (node instanceof Label) {
             Integer rowIndex = GridPane.getRowIndex(node);
             Integer columnIndex = GridPane.getColumnIndex(node);
-
-            // Verificar si la celda no está en la primera fila ni en la primera columna
             if (rowIndex != null && columnIndex != null && rowIndex > 0 && columnIndex > 0) {
                 etiquetasEliminar.add(node);
             }
         }
     }
 
-    // Eliminar las etiquetas seleccionadas del GridPane
     gridPane.getChildren().removeAll(etiquetasEliminar);
     }
     
-private void reservarPista(MouseEvent event){
-        Label celda = (Label) event.getSource();
-        int columnIndex = GridPane.getColumnIndex(celda);
-        int rowIndex = GridPane.getRowIndex(celda);
+private void reservarPista(MouseEvent event) {
+    Label celda = (Label) event.getSource();
+    int columnIndex = GridPane.getColumnIndex(celda);
+    int rowIndex = GridPane.getRowIndex(celda);
 
-        if (columnIndex > 0 && rowIndex > 0) {
-            int pistaIndex = columnIndex - 1;
-            int horaIndex = rowIndex - 1;
-            Court court = courts.get(pistaIndex);
-            LocalTime hora = generarHorasDisponibles().get(horaIndex);
-            if(ControladorPrincipal.isLogged()){
-               if (isPistaDisponible(court, hora)) {
+    if (columnIndex > 0 && rowIndex > 0) {
+        int pistaIndex = columnIndex - 1;
+        int horaIndex = rowIndex - 1;
+        Court court = courts.get(pistaIndex);
+        LocalTime hora = generarHorasDisponibles().get(horaIndex);
+        if (ControladorPrincipal.isLogged()) {
+            if (isPistaDisponible(court, hora)) {
+                List<Booking> userBookings = club.getUserBookings(user.getNickName());
+                if (tieneReservasConsecutivas(userBookings)) {
+                    
+                    Alert fallida = new Alert(AlertType.INFORMATION);
+                    fallida.setTitle("Reserva Fallida");
+                    fallida.setHeaderText(null);
+                    fallida.setContentText("No puedes hacer reservas consecutivas");
+                    fallida.showAndWait();
+                    return;
+                }
+
                 Alert reservar = new Alert(AlertType.CONFIRMATION);
                 reservar.setTitle("Anular Reserva");
                 reservar.setHeaderText(null);
-                reservar.setContentText("¿Quieres reservar el día " + datePickerPistas.getValue().toString() + " a las " + hora.toString()+ " en la pista " + court.getName() + "?");
+                reservar.setContentText("¿Quieres reservar el día " + datePickerPistas.getValue().toString() + " a las " + hora.toString() + " en la pista " + court.getName() + "?");
                 Optional<ButtonType> result = reservar.showAndWait();
-                if(result.isPresent() && result.get() == ButtonType.OK){
+                if (result.isPresent() && result.get() == ButtonType.OK) {
                     Member member = user;
-                    boolean paid = true; // Ajusta el valor de acuerdo con la lógica de tu aplicación
+                    boolean paid = true;
                     LocalDateTime bookingDate = LocalDateTime.now();
                     LocalDate madeForDay = datePickerPistas.getValue();
 
@@ -231,37 +220,55 @@ private void reservarPista(MouseEvent event){
                     celda.setId("reservado");
                     celda.getStyleClass().add("/estilos/estiloPrincipal.css");
                 }
-                //anular.setContentText("¿Quieres reservar el día " + datePickerPistas.getValue().toString() + " a las " + hora.toString()+ "en la pista " + court.getName().toString() "?");
-                
             } else {
                 Alert fallida = new Alert(AlertType.INFORMATION);
                 fallida.setTitle("Reserva Fallida");
                 fallida.setHeaderText(null);
                 fallida.setContentText("No se pudo reservar porque existe otra reserva en esta hora");
                 fallida.showAndWait();
-            } 
-            } else {
-                Alert fallida = new Alert(AlertType.INFORMATION);
-                fallida.setTitle("Reserva Fallida");
-                fallida.setHeaderText(null);
-                fallida.setContentText("Dirigite a Usuario para iniciar sesión y poder reservar");
-                fallida.showAndWait();
-            
+            }
+        } else {
+            Alert fallida = new Alert(AlertType.INFORMATION);
+            fallida.setTitle("Reserva Fallida");
+            fallida.setHeaderText(null);
+            fallida.setContentText("Dirígete a Usuario para iniciar sesión y poder reservar");
+            fallida.showAndWait();
         }
     }
 }
 
-    private boolean isPistaDisponible(Court court, LocalTime hora) {
-    // Verifica si la pista y la hora están disponibles en la lista de reservas
-    for (Booking booking : dayBookings) {
-        LocalTime bookingHora = booking.getFromTime(); // Obtener la hora de la reserva
 
-        // Comparar solo las horas, sin tener en cuenta los minutos
+    private boolean isPistaDisponible(Court court, LocalTime hora) {
+    for (Booking booking : dayBookings) {
+        LocalTime bookingHora = booking.getFromTime();
         if (booking.getCourt() == court && bookingHora.getHour() == hora.getHour()) {
-            return false; // La pista y la hora no están disponibles
+            return false;
         }
     }
-    return true; // La pista y la hora están disponibles 
+    return true; 
+    }
+    
+    public boolean tieneReservasConsecutivas(List<Booking> reservas) {
+    for (int i = 0; i < reservas.size() - 2; i++) {
+        Booking reservaActual = reservas.get(i);
+        Booking siguienteReserva1 = reservas.get(i + 1);
+        Booking siguienteReserva2 = reservas.get(i + 2);
+        if (sonReservasConsecutivas(reservaActual, siguienteReserva1, siguienteReserva2) && reservaActual.getMember().getNickName().equals(siguienteReserva1.getMember().getNickName()) && reservaActual.getMember().getNickName().equals(siguienteReserva2.getMember().getNickName()) && reservaActual.belongsToMember(user.getNickName())) {
+            return true;
+        }
+    }
+    
+    return false; 
+}
+
+    public boolean sonReservasConsecutivas(Booking r1, Booking r2, Booking r3) {
+        
+        if (r2.getMadeForDay().equals(r1.getMadeForDay()) && r3.getMadeForDay().equals(r1.getMadeForDay()) &&
+            r2.getFromTime().equals(r1.getFromTime().plusHours(1))&& r3.getFromTime().equals(r1.getFromTime().plusHours(2))) {
+            return true; 
+        }
+
+        return false;
     }
 
     @FXML
@@ -281,7 +288,6 @@ private void reservarPista(MouseEvent event){
         inicioStage.setTitle("CLUB DE TENIS GREENBALL");
         inicioStage.setScene(new Scene(userRoot));
         inicioStage.show();
-        // Opcionalmente, puedes cerrar la ventana actual si es necesario
         Stage currentStage = (Stage) botonUsuario.getScene().getWindow();
         currentStage.close();
     }
@@ -315,7 +321,6 @@ private void reservarPista(MouseEvent event){
             userStage.setTitle("USUARIO");
             userStage.setScene(new Scene(userRoot));
             userStage.show();
-            // Opcionalmente, puedes cerrar la ventana actual si es necesario
             Stage currentStage = (Stage) botonUsuario.getScene().getWindow();
             currentStage.close();
         } catch (IOException e) {
@@ -333,7 +338,6 @@ private void reservarPista(MouseEvent event){
             loginStage.setTitle("INICIO DE SESIÓN");
             loginStage.setScene(new Scene(loginRoot));
             loginStage.show();
-            // Opcionalmente, puedes cerrar la ventana actual si es necesario
             Stage currentStage = (Stage) botonUsuario.getScene().getWindow();
             currentStage.close();
         } catch (IOException e) {
@@ -352,7 +356,6 @@ private void reservarPista(MouseEvent event){
             misReservasStage.setTitle("MIS RESERVAS");
             misReservasStage.setScene(new Scene(loginRoot));
             misReservasStage.show();
-            // Opcionalmente, puedes cerrar la ventana actual si es necesario
             Stage currentStage = (Stage) botonMisReservas.getScene().getWindow();
             currentStage.close();
         } catch (IOException e) {

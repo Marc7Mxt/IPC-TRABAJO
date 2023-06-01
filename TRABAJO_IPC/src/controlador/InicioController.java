@@ -84,7 +84,6 @@ public class InicioController implements Initializable {
         pistasStage.setTitle("DISPONIBILIDAD DE PISTAS");
         pistasStage.setScene(new Scene(pistasRoot));
         pistasStage.showAndWait();
-        // Opcionalmente, puedes cerrar la ventana actual si es necesario
         Stage currentStage = (Stage) botonPistas.getScene().getWindow();
         currentStage.close();
         
@@ -120,7 +119,6 @@ public class InicioController implements Initializable {
             userStage.setTitle("USUARIO");
             userStage.setScene(new Scene(userRoot));
             userStage.show();
-            // Opcionalmente, puedes cerrar la ventana actual si es necesario
             Stage currentStage = (Stage) botonUsuario.getScene().getWindow();
             currentStage.close();
         } catch (IOException e) {
@@ -138,7 +136,6 @@ public class InicioController implements Initializable {
             loginStage.setTitle("INICIO DE SESIÓN");
             loginStage.setScene(new Scene(loginRoot));
             loginStage.show();
-            // Opcionalmente, puedes cerrar la ventana actual si es necesario
             Stage currentStage = (Stage) botonUsuario.getScene().getWindow();
             currentStage.close();
         } catch (IOException e) {
@@ -157,7 +154,6 @@ public class InicioController implements Initializable {
             misReservasStage.setTitle("MIS RESERVAS");
             misReservasStage.setScene(new Scene(loginRoot));
             misReservasStage.show();
-            // Opcionalmente, puedes cerrar la ventana actual si es necesario
             Stage currentStage = (Stage) botonMisReservas.getScene().getWindow();
             currentStage.close();
         } catch (IOException e) {

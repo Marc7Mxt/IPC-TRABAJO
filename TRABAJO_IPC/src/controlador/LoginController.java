@@ -68,32 +68,19 @@ public class LoginController implements Initializable {
         Club club = Club.getInstance();
         user = club.getMemberByCredentials(nickname, password);
     
-        // Verificar si los campos están vacíos
         if (nickname.isEmpty() || password.isEmpty()) {
             mostrarAlerta("Por favor rellena los campos para poder iniciar sesión");
             return;
         }
-        // Verificar si el nickname existe en la base de datos
         else if (!club.existsLogin(nickname)) {
             mostrarAlerta("No existe el nickname. Por favor regístrate");
             return;
         }
         
-       
-        // Verificar si las credenciales coinciden con la base de datos
         else if (user != null) {
-            // Obtener la referencia a la ventana actual
             Stage stage = (Stage) botonEntrar.getScene().getWindow();
-
-            // Cerrar la ventana de inicio de sesión
             stage.close();
-
-            // Mostrar mensaje de inicio de sesión exitoso
             mostrarAlerta("Inicio de sesión con éxito, bienvenido " + nickname);
-
-            // Realizar acciones adicionales después del inicio de sesión exitoso
-
-            // Actualizar la clase ControladorPrincipal si es necesario
             ControladorPrincipal.cambiarLoggedIn(true);
             FXMLLoader miCargador = new FXMLLoader(getClass().getResource("/vistas/inicio.fxml"));
             Parent root = miCargador.load();

@@ -101,8 +101,6 @@ public class registroController implements Initializable {
 
         TextFormatter<String> noSpaces = new TextFormatter<>(c -> {
             String entradaTeclado = c.getControlNewText();
-
-            // Verificar si el nuevo texto contiene espacios en blanco
             if (entradaTeclado.contains(" ")) {
                 return null;
             }
@@ -120,25 +118,19 @@ public class registroController implements Initializable {
     @FXML
     private void registrarClicked(ActionEvent event) throws ClubDAOException, IOException {
         Club club = Club.getInstance();
-
-        // revisar que todos los campos son correctos
         if (validarDatos(textfieldNombreRegistro) && validarDatos(textfieldApellidosRegistro) && validarTlf(textfieldTlfRegistro)
                 && validarNickname(textfieldNicknameRegistro) && validarPassword(passfieldRegistro, passfieldRepRegistro)
                 && validarCredit(tarjetaRegistro, svcRegistro)) {
             int svc = 0;
-            // si han completado el campo svc cambiarlo a INTEGER
             if (!svcRegistro.getText().isEmpty()) {
                 svc = Integer.parseInt(svcRegistro.getText());
             }
             Image img;
-            // si no han elegido avatar poner el default
-            // si han elegido darle un valor a img
             if (comboBoxRegistro.getValue() == null) {
                 img = new Image("/avatars/default.png");
             } else {
                 img = new Image(comboBoxRegistro.getValue());
             }
-            // Alerta : REGISTRO CORRECTO
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setHeaderText(null);
             alert.setTitle("Información");
@@ -199,14 +191,11 @@ public class registroController implements Initializable {
             }
         }
     }
-// metodo para saber si el TextField es valido
-
     private boolean validarDatos(TextField t) {
         String s = t.getText();
         return (!s.isEmpty()) && (s.trim().length() != 0);
     }
 
-    // metodo para saber si el TextField del NICK es valido
     private boolean validarNickname(TextField t) throws ClubDAOException, IOException {
         Club club = Club.getInstance();
         boolean existe = club.existsLogin(t.getText());
@@ -214,7 +203,6 @@ public class registroController implements Initializable {
         return validarDatos(t) && !existe;
     }
 
-    // metodo para saber si el TextField de la CONTRASEÑA es valido
     private boolean validarPassword(TextField t, TextField t1) {
         String s = t.getText();
         String r = "^(?=.*[0-9])"
@@ -226,7 +214,6 @@ public class registroController implements Initializable {
         return validarDatos(t) && m.matches() && s.equals(t1.getText());
     }
 
-    // metodo para saber si el TextField del TELEFONO es valido
     private boolean validarTlf(TextField t) {
         String s = t.getText();
         Pattern p = Pattern.compile("^\\d{9}$");
@@ -234,9 +221,7 @@ public class registroController implements Initializable {
         return validarDatos(t) && m.matches();
     }
 
-    // metodo para saber si el TextField de la TARJETA y el SVC es valido
     private boolean validarCredit(TextField t, TextField t1) {
-        // String cleanCreditCard = t.replaceAll("\\s|-", "");
         String s = t.getText();
         Pattern p = Pattern.compile("^\\d{16}$");
         Matcher m = p.matcher(s);
