@@ -34,6 +34,7 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import javafxmlapplication.JavaFXMLApplication;
 import model.Booking;
@@ -135,10 +136,18 @@ public class MisReservasController implements Initializable {
     
     @FXML
     private void IraPistas(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/vistas/pistas.fxml"));
-        Parent root = loader.load();
-        
-        JavaFXMLApplication.setRoot(root);
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/vistas/pistasprueba2.fxml"));
+        Parent pistasRoot = loader.load();
+        PistasPrueba2Controller ventanaDatosController = loader.getController();
+        ventanaDatosController.initMember(user);
+        Stage pistasStage = new Stage();
+        pistasStage.getIcons().add(new Image(this.getClass().getResourceAsStream("/fotostrabajo/logo.jpeg")));
+        pistasStage.setTitle("DISPONIBILIDAD DE PISTAS");
+        pistasStage.setScene(new Scene(pistasRoot));
+        pistasStage.showAndWait();
+        // Opcionalmente, puedes cerrar la ventana actual si es necesario
+        Stage currentStage = (Stage) botonPistas.getScene().getWindow();
+        currentStage.close();
     }
 
     @FXML
@@ -147,12 +156,13 @@ public class MisReservasController implements Initializable {
         Parent userRoot = loader.load();
         InicioController inicioController = loader.getController();
         inicioController.initMember(user.getNickName(), user.getPassword());
-        Stage userStage = new Stage();
-        userStage.setScene(new Scene(userRoot));
-        userStage.show();
-
+        Stage inicioStage = new Stage();
+        inicioStage.getIcons().add(new Image(this.getClass().getResourceAsStream("/fotostrabajo/logo.jpeg")));
+        inicioStage.setTitle("CLUB DE TENIS GREENBALL");
+        inicioStage.setScene(new Scene(userRoot));
+        inicioStage.show();
         // Opcionalmente, puedes cerrar la ventana actual si es necesario
-        Stage currentStage = (Stage) botonUsuario.getScene().getWindow();
+        Stage currentStage = (Stage) botonInicio.getScene().getWindow();
         currentStage.close();
     }
     
@@ -194,9 +204,10 @@ public class MisReservasController implements Initializable {
             ventanaDatosController ventanaDatosController = loader.getController();
             ventanaDatosController.initMember(user);
             Stage userStage = new Stage();
+            userStage.getIcons().add(new Image(this.getClass().getResourceAsStream("/fotostrabajo/logo.jpeg")));
+            userStage.setTitle("USUARIO");
             userStage.setScene(new Scene(userRoot));
             userStage.show();
-
             // Opcionalmente, puedes cerrar la ventana actual si es necesario
             Stage currentStage = (Stage) botonUsuario.getScene().getWindow();
             currentStage.close();

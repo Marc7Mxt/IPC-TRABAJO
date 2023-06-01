@@ -178,6 +178,8 @@ public class ventanaDatosController implements Initializable {
         Stage stage = (Stage) botonVolver.getScene().getWindow();
         stage.close();
         Stage userStage = new Stage();
+        userStage.getIcons().add(new Image(this.getClass().getResourceAsStream("/fotostrabajo/logo.jpeg")));
+        userStage.setTitle("CLUB DE TENIS GREENBALL");
         userStage.setScene(new Scene(userRoot));
         userStage.show();
     }
@@ -235,6 +237,8 @@ public class ventanaDatosController implements Initializable {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/vistas/inicio.fxml"));
             Parent userRoot = loader.load();
             Stage inicioStage = new Stage();
+            inicioStage.getIcons().add(new Image(this.getClass().getResourceAsStream("/fotostrabajo/logo.jpeg")));
+            inicioStage.setTitle("CLUB DE TENNIS GREENBALL");
             inicioStage.setScene(new Scene(userRoot));
             inicioStage.show();
             

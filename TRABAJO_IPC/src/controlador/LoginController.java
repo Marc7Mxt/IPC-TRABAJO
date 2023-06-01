@@ -100,14 +100,15 @@ public class LoginController implements Initializable {
             InicioController controlador = miCargador.getController();
             controlador.initMember(nickname, password);
             Scene scene = new Scene(root, 600, 388.66666666666663);
-            Stage stage2 = new Stage();
-            stage2.setScene(scene);
-            stage2.setTitle("CLUB DE TENIS GREENBALL");
+            Stage inicioStage = new Stage();
+            inicioStage.setScene(scene);
+            inicioStage.getIcons().add(new Image(this.getClass().getResourceAsStream("/fotostrabajo/logo.jpeg")));
+            inicioStage.setTitle("CLUB DE TENIS GREENBALL");
             //stage2.setResizable(false);
-            stage2.initModality(Modality.APPLICATION_MODAL);
-            stage2.show();
-            stage2 = (Stage) botonEntrar.getScene().getWindow();
-            stage2.close(); 
+            inicioStage.initModality(Modality.APPLICATION_MODAL);
+            inicioStage.show();
+            inicioStage = (Stage) botonEntrar.getScene().getWindow();
+            inicioStage.close(); 
 
         } else { mostrarAlerta("Por favor proporciona los datos necesarios");}
     }
@@ -126,9 +127,11 @@ public class LoginController implements Initializable {
     private void volverClicked(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/vistas/inicio.fxml"));
         Parent userRoot = loader.load();
-        Stage userStage = new Stage();
-        userStage.setScene(new Scene(userRoot));
-        userStage.show();
+        Stage inicioStage = new Stage();
+        inicioStage.getIcons().add(new Image(this.getClass().getResourceAsStream("/fotostrabajo/logo.jpeg")));
+        inicioStage.setTitle("CLUB DE TENIS GREENBALL");
+        inicioStage.setScene(new Scene(userRoot));
+        inicioStage.show();
         Stage stage = (Stage) botonVolver.getScene().getWindow();
         stage.close();
     }
@@ -140,7 +143,8 @@ public class LoginController implements Initializable {
         Scene scene = new Scene(root, 600, 500);
         Stage stage = new Stage();
         stage.setScene(scene);
-        stage.setTitle("Registro de Usuario Nuevo");
+        stage.getIcons().add(new Image(this.getClass().getResourceAsStream("/fotostrabajo/logo.jpeg")));
+        stage.setTitle("REGISTRO DE USUARIO NUEVO");
         stage.setResizable(false);
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.showAndWait();

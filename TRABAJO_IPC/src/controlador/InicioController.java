@@ -16,6 +16,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -79,6 +80,8 @@ public class InicioController implements Initializable {
         PistasPrueba2Controller ventanaDatosController = loader.getController();
         ventanaDatosController.initMember(user);
         Stage pistasStage = new Stage();
+        pistasStage.getIcons().add(new Image(this.getClass().getResourceAsStream("/fotostrabajo/logo.jpeg")));
+        pistasStage.setTitle("DISPONIBILIDAD DE PISTAS");
         pistasStage.setScene(new Scene(pistasRoot));
         pistasStage.showAndWait();
         // Opcionalmente, puedes cerrar la ventana actual si es necesario
@@ -113,9 +116,10 @@ public class InicioController implements Initializable {
             ventanaDatosController ventanaDatosController = loader.getController();
             ventanaDatosController.initMember(user);
             Stage userStage = new Stage();
+            userStage.getIcons().add(new Image(this.getClass().getResourceAsStream("/fotostrabajo/logo.jpeg")));
+            userStage.setTitle("USUARIO");
             userStage.setScene(new Scene(userRoot));
             userStage.show();
-
             // Opcionalmente, puedes cerrar la ventana actual si es necesario
             Stage currentStage = (Stage) botonUsuario.getScene().getWindow();
             currentStage.close();
@@ -130,9 +134,10 @@ public class InicioController implements Initializable {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/vistas/login.fxml"));
             Parent loginRoot = loader.load();
             Stage loginStage = new Stage();
+            loginStage.getIcons().add(new Image(this.getClass().getResourceAsStream("/fotostrabajo/logo.jpeg")));
+            loginStage.setTitle("INICIO DE SESIÓN");
             loginStage.setScene(new Scene(loginRoot));
             loginStage.show();
-
             // Opcionalmente, puedes cerrar la ventana actual si es necesario
             Stage currentStage = (Stage) botonUsuario.getScene().getWindow();
             currentStage.close();
@@ -147,10 +152,11 @@ public class InicioController implements Initializable {
             Parent loginRoot = loader.load();
             MisReservasController misReservas = loader.getController();
             misReservas.initMember(user);
-            Stage loginStage = new Stage();
-            loginStage.setScene(new Scene(loginRoot));
-            loginStage.show();
-
+            Stage misReservasStage = new Stage();
+            misReservasStage.getIcons().add(new Image(this.getClass().getResourceAsStream("/fotostrabajo/logo.jpeg")));
+            misReservasStage.setTitle("MIS RESERVAS");
+            misReservasStage.setScene(new Scene(loginRoot));
+            misReservasStage.show();
             // Opcionalmente, puedes cerrar la ventana actual si es necesario
             Stage currentStage = (Stage) botonMisReservas.getScene().getWindow();
             currentStage.close();

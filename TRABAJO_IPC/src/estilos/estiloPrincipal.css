@@ -7,3 +7,15 @@
     -fx-background-position: center;
 }
 
+#disponible{
+    -fx-text-fill: green;
+    /*-fx-text-fill:#97d197; */
+   /* -fx-text-fill: white; */
+}
+#reservado{
+    -fx-text-fill: red;
+   /* -fx-text-fill:#ff9999; */
+   /* -fx-text-fill: white; */
+}
+
+

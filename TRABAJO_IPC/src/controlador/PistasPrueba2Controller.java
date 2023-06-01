@@ -37,6 +37,7 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.DatePicker;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import model.Booking;
 
@@ -68,6 +69,18 @@ public class PistasPrueba2Controller implements Initializable {
     private Button botonMisReservas;
     @FXML
     private Button botonUsuario;
+    @FXML
+    private Label labelHoras1;
+    @FXML
+    private Label labelHoras11;
+    @FXML
+    private Label labelHoras12;
+    @FXML
+    private Label labelHoras13;
+    @FXML
+    private Label labelHoras14;
+    @FXML
+    private Label labelHoras15;
     
     public void initMember(Member u) {
         this.user = u;
@@ -195,8 +208,8 @@ private void reservarPista(MouseEvent event){
             int horaIndex = rowIndex - 1;
             Court court = courts.get(pistaIndex);
             LocalTime hora = generarHorasDisponibles().get(horaIndex);
-
-            if (isPistaDisponible(court, hora)) {
+            if(ControladorPrincipal.isLogged()){
+               if (isPistaDisponible(court, hora)) {
                 Alert reservar = new Alert(AlertType.CONFIRMATION);
                 reservar.setTitle("Anular Reserva");
                 reservar.setHeaderText(null);
@@ -226,9 +239,17 @@ private void reservarPista(MouseEvent event){
                 fallida.setHeaderText(null);
                 fallida.setContentText("No se pudo reservar porque existe otra reserva en esta hora");
                 fallida.showAndWait();
-            }
+            } 
+            } else {
+                Alert fallida = new Alert(AlertType.INFORMATION);
+                fallida.setTitle("Reserva Fallida");
+                fallida.setHeaderText(null);
+                fallida.setContentText("Dirigite a Usuario para iniciar sesión y poder reservar");
+                fallida.showAndWait();
+            
         }
     }
+}
 
     private boolean isPistaDisponible(Court court, LocalTime hora) {
     // Verifica si la pista y la hora están disponibles en la lista de reservas
@@ -255,10 +276,11 @@ private void reservarPista(MouseEvent event){
         if(user!=null){
             inicioController.initMember(user.getNickName(), user.getPassword());
         }
-        Stage userStage = new Stage();
-        userStage.setScene(new Scene(userRoot));
-        userStage.show();
-
+        Stage inicioStage = new Stage();
+        inicioStage.getIcons().add(new Image(this.getClass().getResourceAsStream("/fotostrabajo/logo.jpeg")));
+        inicioStage.setTitle("CLUB DE TENIS GREENBALL");
+        inicioStage.setScene(new Scene(userRoot));
+        inicioStage.show();
         // Opcionalmente, puedes cerrar la ventana actual si es necesario
         Stage currentStage = (Stage) botonUsuario.getScene().getWindow();
         currentStage.close();
@@ -289,9 +311,10 @@ private void reservarPista(MouseEvent event){
             ventanaDatosController ventanaDatosController = loader.getController();
             ventanaDatosController.initMember(user);
             Stage userStage = new Stage();
+            userStage.getIcons().add(new Image(this.getClass().getResourceAsStream("/fotostrabajo/logo.jpeg")));
+            userStage.setTitle("USUARIO");
             userStage.setScene(new Scene(userRoot));
             userStage.show();
-
             // Opcionalmente, puedes cerrar la ventana actual si es necesario
             Stage currentStage = (Stage) botonUsuario.getScene().getWindow();
             currentStage.close();
@@ -306,9 +329,10 @@ private void reservarPista(MouseEvent event){
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/vistas/login.fxml"));
             Parent loginRoot = loader.load();
             Stage loginStage = new Stage();
+            loginStage.getIcons().add(new Image(this.getClass().getResourceAsStream("/fotostrabajo/logo.jpeg")));
+            loginStage.setTitle("INICIO DE SESIÓN");
             loginStage.setScene(new Scene(loginRoot));
             loginStage.show();
-
             // Opcionalmente, puedes cerrar la ventana actual si es necesario
             Stage currentStage = (Stage) botonUsuario.getScene().getWindow();
             currentStage.close();
@@ -323,10 +347,11 @@ private void reservarPista(MouseEvent event){
             Parent loginRoot = loader.load();
             MisReservasController misReservas = loader.getController();
             misReservas.initMember(user);
-            Stage loginStage = new Stage();
-            loginStage.setScene(new Scene(loginRoot));
-            loginStage.show();
-
+            Stage misReservasStage = new Stage();
+            misReservasStage.getIcons().add(new Image(this.getClass().getResourceAsStream("/fotostrabajo/logo.jpeg")));
+            misReservasStage.setTitle("MIS RESERVAS");
+            misReservasStage.setScene(new Scene(loginRoot));
+            misReservasStage.show();
             // Opcionalmente, puedes cerrar la ventana actual si es necesario
             Stage currentStage = (Stage) botonMisReservas.getScene().getWindow();
             currentStage.close();
